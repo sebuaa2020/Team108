@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/zt/demo_ws/src/robot_sim_demo/devel -DCMAKE_INSTALL_PREFIX=/home/zt/demo_ws/src/robot_sim_demo/install -G Unix Makefiles
