@@ -1,20 +1,20 @@
-# 导航模块
+# ROS开发
 
-## 建图部分
+本次项目采用课程组的demo1虚拟环境，运行指令为：
+
+```bash
+roslaunch robot_sim_demo robot_spawn.launch
+```
+
+出现场景为
+
+![场景图](.\Image\场景图.png)
+
+## 导航模块
+
+### 建图部分
 
 涉及代码部分为`rplidar_ros`和`wpb_home_tutorials`两部分，`rplidar_ros`主要是雷达部分，`wpb_home_tutorials`有关具体建图部分。
-
-1. 运行虚拟环境，本次项目采用demo1的虚拟环境，运行指令为：
-
-   ```bash
-   roslaunch robot_sim_demo robot_spawn.launch
-   ```
-
-   出现场景为
-
-   ![场景图](.\Image\场景图.png)
-
-   
 
 2. 利用启智机器人的gmapping建图功能进行地图构建，运行指令为：
 
