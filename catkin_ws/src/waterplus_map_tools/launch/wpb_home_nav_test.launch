@@ -1,21 +1,5 @@
 <launch>
   <master auto="start"/>
-
-  <!-- wpb_home core-->
-  <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
-    <param name="serial_port" type="string" value="/dev/ftdi"/> 
-    <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
-  </node>
-
-  <!--- Run Rplidar -->
-  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
-    <param name="serial_port"         type="string" value="/dev/rplidar"/>  
-    <param name="serial_baudrate"     type="int"    value="115200"/>
-    <param name="frame_id"            type="string" value="laser"/>
-    <param name="inverted"            type="bool"   value="false"/>
-    <param name="angle_compensate"    type="bool"   value="true"/>
-    <remap from="scan" to="scan_raw"/>
-  </node>
     
   <!-- Run lidar filter -->
   <node pkg="wpb_home_bringup" type="wpb_home_lidar_filter" name="wpb_home_lidar_filter">
@@ -43,7 +27,7 @@
 
   <!-- RViz and TF tree -->
   <arg name="model" default="$(find wpb_home_bringup)/urdf/wpb_home_mani.urdf"/>
-  <arg name="gui" default="true" />
+  <arg name="gui" default="false" />
   <arg name="rvizconfig" default="$(find waterplus_map_tools)/rviz/nav.rviz" />
 
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
