@@ -1,0 +1,6 @@
+<launch>
+  <node name = "laser_obstacle_avoidance"          pkg="my_vel_package"  type="vel_ctrl" output="screen" required = "true">
+  </node>
+  <include file = "$(find rplidar_ros)/launch/rplidar.launch"/>
+  <include file = "$(find wpb_home_bringup)/launch/minimal.launch"/>
+</launch>

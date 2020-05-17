@@ -1,4 +1,4 @@
-# ROS开发
+﻿# ROS开发
 
 本次项目采用课程组的demo1虚拟环境，运行指令为：
 
@@ -38,5 +38,10 @@ roslaunch robot_sim_demo robot_spawn.launch
    rosrun map_server map_saver -f map
    ```
 
-   
+## 避障与自由行走模块
+
+这一部分主要写作于my_vel_package文件夹下的相关文件中，主要包括机器人进行基本建图操作时的自由行走、避障、路径重新规划等部分，
+具体内容参见.launch文件和src文件夹
+
+
 
