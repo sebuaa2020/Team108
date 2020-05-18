@@ -47,21 +47,21 @@ roslaunch robot_sim_demo robot_spawn.launch
 `wp——saver`将航点保存为waypoints.xml
 `wpb_home_nav_test.launch`测试航点是否能正常加载
 
-2. 运行add_waypoint.launch文件添加航点，注意修改add_waypoint.launch中load的路径为想要保存的路径：
+1. 运行add_waypoint.launch文件添加航点，注意修改add_waypoint.launch中load的路径为想要保存的路径：
 
    ```bash
    roslaunch waterplus_map_tools add_waypoint.launch
    ```
    
-3. 保持add_waypoint.launch的终端别关闭，将设置的航点保存在waypoints.xml中：
+2. 保持add_waypoint.launch的终端别关闭，将设置的航点保存在waypoints.xml中：
 
    ```bash
    rosrun waterplus_map_tools wp_saver
    ```
    
-4.修改waypoint.xml文件，第一个航点名设为start
+3.修改waypoint.xml文件，第一个航点名设为start
 
-5. 可以使用wpb_home_nav_test.launch测试航点是否能够正常加载，注意修改wpb_home_nav_test.launch 中的load参数为waypoints.xml的路径：
+4. 可以使用wpb_home_nav_test.launch测试航点是否能够正常加载，注意修改wpb_home_nav_test.launch 中的load参数为waypoints.xml的路径：
 
    ```bash
    roslaunch waterplus_map_tools wpb_home_nav_test.launch
