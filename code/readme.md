@@ -44,7 +44,49 @@ roslaunch robot_sim_demo robot_spawn.launch
    wpb_home_tutorials/gmapping.launch文件用来建图
    wpb_home_apps/6_path_plan.launch文件用来多点导航
 
+### 多点巡航部分
 
+涉及的源码主要在`wpb_home_apps`包，其主要功能是新建航点，实现遍历所有航点的路径规划功能。具体内容详见`wpb_home_apps/src`文件夹下。
+
+在多点巡航任务中，系统有如下四个状态
+
+```
+#define STATE_READY       0	// 准备状态
+#define STATE_WAIT_ENTR   1	// 系统初始化，准备到达起点状态
+#define STATE_GOTO        2	// 运行状态
+#define STATE_DONE        3	// 任务完成状态
+```
+
+ros模块首先初始化5个待遍历航点。随后经过一系列初始化操作，开始系统的运行。
+
+任务待开始时，系统的状态是`STATE_WAIT_ENTER`，然后当系统检测到有`entrance_detect`模块传进来的20条`door open`信息之后，出发至场地的起点。并更改状态为运行状态。
+
+```cpp
+ if(!ac.waitForServer(ros::Duration(5.0)))
+{
+	// 服务器请求失败
+    ROS_INFO("The move_base action server is no running. action abort...");
+}
+else
+{
+    ...
+    {
+        ROS_INFO("Arrived at %s!",strGoto.c_str());
+        //到达"start"航点,开始执行航点遍历脚本
+        Speak("I am ready.");
+        ros::spinOnce();
+        sleep(3);
+		// 更改状态为运行状态
+        nState = STATE_GOTO; 
+        strGoto = arWaypoint[nWaypointIndex];
+        nWaypointIndex ++;
+    }
+    else
+        ROS_INFO("Failed to get to %s ...",strGoto.c_str() );	// 到达目标地点失败
+}
+```
+
+之后，机器人依次遍历之后的航点。直至遍历完成，更改状态为`STATE_DONE`，或者运行过程中产生异常重新执行其待到达的下一目标。
 
 ## 避障与自由行走模块
 
