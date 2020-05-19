@@ -46,8 +46,6 @@ roslaunch robot_sim_demo robot_spawn.launch
 
 ### 新增航点部分
 
-主要涉及`add_waypoint.launch`和`wp_saver`两个文件，wpb_home_nav_test.launch用于测试
-
 主要涉及`add_waypoint.launch`和`wp_saver`两个文件，`wpb_home_nav_test.launch`用于测试
 
 `add_waypoint.launch`用于新增航点
