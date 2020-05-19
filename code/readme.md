@@ -47,10 +47,15 @@ roslaunch robot_sim_demo robot_spawn.launch
 ### 新增航点部分
 
 主要涉及`add_waypoint.launch`和`wp_saver`两个文件，wpb_home_nav_test.launch用于测试
+
 主要涉及`add_waypoint.launch`和`wp_saver`两个文件，`wpb_home_nav_test.launch`用于测试
-`add_waypoint.launch`用于新增航点，
+
+`add_waypoint.launch`用于新增航点
+
 `wp——saver`将航点保存为waypoints.xml
+
 `wp——saver`将航点保存为`waypoints.xml`
+
 `wpb_home_nav_test.launch`测试航点是否能正常加载
 
 1. 运行`add_waypoint.launch`文件添加航点，注意修改`add_waypoint.launch`中`load`的路径为想要保存的路径：
