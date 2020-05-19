@@ -39,10 +39,39 @@ roslaunch robot_sim_demo robot_spawn.launch
    ```bash
    rosrun map_server map_saver -f map
    ```
-   
+  
    waterplus_map_tools/add_point.launch文件添加导航点
    wpb_home_tutorials/gmapping.launch文件用来建图
    wpb_home_apps/6_path_plan.launch文件用来多点导航
+
+### 新增航点部分
+
+主要涉及`add_waypoint.launch`和`wp_saver`两个文件，wpb_home_nav_test.launch用于测试
+主要涉及`add_waypoint.launch`和`wp_saver`两个文件，`wpb_home_nav_test.launch`用于测试
+`add_waypoint.launch`用于新增航点，
+`wp——saver`将航点保存为waypoints.xml
+`wp——saver`将航点保存为`waypoints.xml`
+`wpb_home_nav_test.launch`测试航点是否能正常加载
+
+1. 运行`add_waypoint.launch`文件添加航点，注意修改`add_waypoint.launch`中`load`的路径为想要保存的路径：
+
+   ```bash
+   roslaunch waterplus_map_tools add_waypoint.launch
+   ```
+
+2. 保持add_waypoint.launch的终端别关闭，将设置的航点保存在`waypoints.xml`中：
+
+   ```bash
+   rosrun waterplus_map_tools wp_saver
+   ```
+
+3. 修改`waypoint.xml`文件，第一个航点名设为`start`
+
+4. 可以使用`wpb_home_nav_test.launch`测试航点是否能够正常加载，注意修改`wpb_home_nav_test.launch `中的load参数为`waypoints.xml`的路径：
+
+   ```bash
+   roslaunch waterplus_map_tools wpb_home_nav_test.launch
+   ```
 
 ### 多点巡航部分
 
