@@ -1,4 +1,4 @@
-﻿# ROS开发
+# ROS开发
 
 本次项目采用课程组的demo1虚拟环境，运行指令为：
 
@@ -148,15 +148,30 @@ vel_cmd.angular.z（注意 angular）是机器人自转速度，正值左转，�
 其他值对启智机器人来说没有意义，所以都赋值为零。
 
 
-
-
-
 ## 完成任务的整体文件
 
 主要参见my_total文件夹内容，其中的.cpp文件搭建起了项目的整体框架
 这部分代码在一定程度上参考了《开发手册》竞赛场景应用的一些思路和做法
 
+主要在`my_total`包，其主要功能是搭建程序的主要框架，调动其他部分完成功能。
+对应指令 
+```roslaunch wpb_home_apps shopping.launch
+```
 
+在这部分程序中实现了一个有限状态机，通过变量nState的赋值来表示机器人不同状态的衔接与跳转。
 
+```STATE_READY    机器人调整完毕，准备接收下一步指令
+STATE_FOLLOW    机器人开始使用激光雷达建图
+STATE_ASK    机器人等待下一步指令
+STATE_GOTO    机器人向给定导航点移动
+STATE_GRAB    机器人进行抓取动作
+STATE_COMBACK    机器人返回
+STATE_PASS    机器人递交抓取到的物体
+```
+my_total/src/shopping.cpp中函数很多，其中：
+主函数 int mai  n()中，对变量的初始化和各种主题订阅、发布，
+在while循环中具体实现有限状态机，在每种状态中根据条件完成状态跳转。
+void AddNewWaypoint(string inStr)函数能将机器人在地图中的当前位置保存为航
+点，参数为要保存的航点名称。
 
 

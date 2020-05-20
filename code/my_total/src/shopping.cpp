@@ -312,6 +312,15 @@ int main(int argc, char** argv)
 
     ROS_WARN("[main] wpb_home_shopping");
     ros::Rate r(30);
+    
+    /*
+     my_total/src/shopping.cpp中函数很多，其中：
+     主函数 int mai  n()中，对变量的初始化和各种主题订阅、发布，
+     在while循环中具体实现有限状态机，在每种状态中根据条件完成状态跳转。
+     void AddNewWaypoint(string inStr)函数能将机器人在地图中的当前位置保存为航
+     点，参数为要保存的航点名称。
+     */
+    
     while(ros::ok())
     {
         // 1、刚启动，准备
