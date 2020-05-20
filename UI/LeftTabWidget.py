@@ -124,9 +124,132 @@ class LeftTabWidget(QWidget):
                     self.layout8.addWidget(self.label8_1, 0, 0, 1, 9)
 
                     self.right_widget.addWidget(self.centralWidget8)
+                    self.item.setSizeHint(QSize(60, 65))
+                    self.item.setTextAlignment(Qt.AlignCenter)  # 居中显示
 
-            self.item.setSizeHint(QSize(60, 65))
-            self.item.setTextAlignment(Qt.AlignCenter)  # 居中显示
+
+
+
+			# '硬件设置'
+            elif i == 7:
+                self.centralWidget7 = QtWidgets.QWidget()
+                self.centralWidget7.setStyleSheet('''background:#F0FFFF;border-width:0;''');
+
+                self.layout7 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget7.setLayout(self.layout7)
+
+                self.label7_1 = QtWidgets.QLabel()
+                self.label7_1.setTextFormat(QtCore.Qt.AutoText)
+                self.label7_1.setText("硬件设置")
+                self.label7_1.setStyleSheet('''color:black;font-size:23px;background:#F0FFFF;
+                                                font-family:Times new Romans;''');
+                self.label7_1.setAlignment(Qt.AlignCenter)
+
+                self.label7_2 = QtWidgets.QLabel()
+                self.label7_2.setTextFormat(QtCore.Qt.AutoText)
+                self.label7_2.setPixmap(QPixmap('structure.png'))
+                self.label7_2.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label7_2.setAlignment(Qt.AlignCenter)
+
+                self.label7_3 = QtWidgets.QLabel()
+                self.label7_3.setTextFormat(QtCore.Qt.AutoText)
+                self.label7_3.setPixmap(QPixmap('panel.png'))
+                self.label7_3.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label7_3.setAlignment(Qt.AlignCenter)
+
+                self.label7_4 = QtWidgets.QLabel()
+                self.label7_4.setTextFormat(QtCore.Qt.AutoText)
+                self.label7_4.setText("结构组成展示")
+                self.label7_4.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label7_4.setAlignment(Qt.AlignCenter)
+
+
+                self.label7_5 = QtWidgets.QLabel()
+                self.label7_5.setTextFormat(QtCore.Qt.AutoText)
+                self.label7_5.setText("开关面板展示")
+                self.label7_5.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label7_5.setAlignment(Qt.AlignCenter)
+
+                self.layout7.addWidget(self.label7_1, 0, 0, 1, 4)
+                self.layout7.addWidget(self.label7_2, 1, 0, 1, 2)
+                self.layout7.addWidget(self.label7_3, 1, 2, 1, 2)
+                self.layout7.addWidget(self.label7_4, 2, 0, 1, 2)
+                self.layout7.addWidget(self.label7_5, 2, 2, 1, 2)
+
+                self.right_widget.addWidget(self.centralWidget7)
+
+            # '遇到问题'
+            elif i == 9:
+                self.centralWidget9 = QtWidgets.QWidget()
+                self.centralWidget9.setStyleSheet('''background:white;border-width:0;''');
+
+                self.layout9 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget9.setLayout(self.layout9)
+
+                self.label9_1 = QtWidgets.QLabel()
+                self.label9_1.setTextFormat(QtCore.Qt.AutoText)
+                self.label9_1.setText("在使用本机器人的过程中，你可能遇到以下几种问题：")
+                self.label9_1.setStyleSheet('''color:white;font-size:23px;background:#1E90FF;
+                                                font-family:Times new Romans;''');
+                self.label9_1.setAlignment(Qt.AlignCenter)
+
+                self.label9_2 = QtWidgets.QLabel()
+                self.label9_2.setTextFormat(QtCore.Qt.AutoText)
+                self.label9_2.setText(
+                    "Q1：用户下达指令后，机器人无法运动\nA1：停止使用机器人，检查机器人电量是否充足(即剩余电量是否大于等于23)\n若电量不足，请先为机器人补充电量再使用\n若电量充足，或补充电量后机器人仍不运行\n请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
+                self.label9_2.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label9_2.setAlignment(Qt.AlignCenter)
+
+                self.label9_3 = QtWidgets.QLabel()
+                self.label9_3.setTextFormat(QtCore.Qt.AutoText)
+                self.label9_3.setText("Q2：机器人部件损坏或在运动中出现故障\nA1：请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
+                self.label9_3.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label9_3.setAlignment(Qt.AlignCenter)
+
+                self.label9_4 = QtWidgets.QLabel()
+                self.label9_4.setTextFormat(QtCore.Qt.AutoText)
+                self.label9_4.setText(
+                    "Q3：机器人在运动中发生碰撞\nA3：立即使用“急停”按钮使机器人紧急制动\n查看机器人情况，从外观上初步判断机器人是否完好，并尝试机器人的其他功能\n若出现外观上的较大损坏或功能上的缺失\n请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
+                self.label9_4.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label9_4.setAlignment(Qt.AlignCenter)
+
+                self.label9_5 = QtWidgets.QLabel()
+                self.label9_5.setTextFormat(QtCore.Qt.AutoText)
+                self.label9_5.setText(
+                    "Q4：机器人出现了其他的错误（包括报告未知错误信息）\nA4：请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务\n注意，我们需要您提供相关的错误信息，包括机器人当时的运动状态、如发生错误前后的操作、\n具体错误行为表现、控制单元报告的错误信息具体内容等")
+                self.label9_5.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label9_5.setAlignment(Qt.AlignCenter)
+
+                self.layout9.addWidget(self.label9_1, 0, 0, 1, 4)
+                self.layout9.addWidget(self.label9_2, 1, 0, 1, 2)
+                self.layout9.addWidget(self.label9_3, 1, 2, 1, 2)
+                self.layout9.addWidget(self.label9_4, 2, 0, 1, 2)
+                self.layout9.addWidget(self.label9_5, 2, 2, 1, 2)
+
+                self.right_widget.addWidget(self.centralWidget9)
+
+            else:
+                if i!= 0 and i != 4 and i != 8:
+                    self.centralWidget0=QtWidgets.QWidget()
+                    self.centralWidget0.setStyleSheet('''background:white;border-width:0;''');
+                    self.right_widget.addWidget(self.centralWidget0)
+
 
 
 def main():
