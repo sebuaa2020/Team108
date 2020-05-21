@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding:utf-8 -*-
 import sys
 import os
 import regex as re
 import time
-import ui1
+# import ui1
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -32,7 +32,7 @@ class LeftTabWidget(QWidget):
             QListWidget {
                 min-width: 150px;
                 max-width: 150px;
-                
+
                 color: White;
                 background:#545454;    
             }
@@ -127,9 +127,76 @@ class LeftTabWidget(QWidget):
                     self.item.setSizeHint(QSize(60, 65))
                     self.item.setTextAlignment(Qt.AlignCenter)  # 居中显示
 
+            if i == 1:
+                self.centralWidget1 = QtWidgets.QWidget()
+                self.centralWidget1.setStyleSheet('''background:black;border-width:0;''');
+                self.layout1 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget1.setLayout(self.layout1)
+
+                self.edit1_1 = QtWidgets.QLineEdit()
+                self.edit1_1.setPlaceholderText("请输入速度(两位小数,0.0-1.0)")
+                self.edit1_1.setStyleSheet('''color:white;background:transparent;border-width:0;
+                                                border-style:outset;border-bottom:1px solid white;
+                                                font-size:20px; font-family:等线;''')
+                self.vel_reg = QRegExp(r"^(0)|(0\.[0-9])|(1)|(1\.0)$")
+                self.vel_validator = QRegExpValidator(self.vel_reg, self.edit1_1)
+                self.edit1_1.setValidator(self.vel_validator)
+
+                self.edit1_2 = QtWidgets.QLineEdit()
+                self.edit1_2.setPlaceholderText("请输入时间(三位整数)")
+                self.edit1_2.setStyleSheet('''color:white;background:transparent;border-width:0;
+                                                border-style:outset;border-bottom:1px solid white;
+                                                font-size:20px; font-family:等线;''')
+                self.time_reg = QRegExp("^[0-9]{3}$")
+                self.time_validator = QRegExpValidator(self.time_reg, self.edit1_2)
+                self.edit1_2.setValidator(self.time_validator)
+
+                self.label1_1 = QtWidgets.QLabel()  # 设置label
+                self.label1_1.setTextFormat(QtCore.Qt.AutoText)
+                self.label1_1.setText("速度")
+                self.label1_1.setStyleSheet('''color:white;font-size:23px; font-family:等线;''');
+                self.label1_1.setAlignment(Qt.AlignCenter)
+
+                self.label1_2 = QtWidgets.QLabel()
+                self.label1_2.setTextFormat(QtCore.Qt.AutoText)
+                self.label1_2.setText("时间")
+                self.label1_2.setStyleSheet('''color:white;font-size:23px; font-family:等线;''');
+                self.label1_2.setAlignment(Qt.AlignCenter)
+
+                self.label1_3 = QtWidgets.QLabel()
+                self.label1_3.setTextFormat(QtCore.Qt.AutoText)
+                self.label1_3.setText("扫地")
+                self.label1_3.setStyleSheet('''color:white;font-size:23px;background:rgb(100,100,100,80;background:#454545);
+                                                font-family:等线;''');
+                self.label1_3.setAlignment(Qt.AlignCenter)
+
+                self.button1 = QtWidgets.QPushButton()
+                self.button1.setText("开始")
+                self.button1.setFixedSize(100, 40)
+                self.button1.setStyleSheet('''QPushButton{background:#EE9A00;border-radius:10px;font-family:等线;
+                                               font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
+                self.button1.clicked.connect(self.button1_1click)
+
+                self.layout1.setColumnStretch(0, 2)
+                self.layout1.setColumnStretch(1, 2)
+                self.layout1.setColumnStretch(2, 2)
+                self.layout1.setColumnStretch(3, 2)
+                self.layout1.setColumnStretch(5, 2)
+                self.layout1.setColumnStretch(6, 2)
+                self.layout1.setColumnStretch(7, 2)
+                self.layout1.setColumnStretch(8, 2)
+                self.layout1.setColumnStretch(4, 1)
+
+                self.layout1.addWidget(self.label1_3, 0, 0, 1, 9)
+                self.layout1.addWidget(self.label1_1, 4, 2, 2, 2)
+                self.layout1.addWidget(self.label1_2, 6, 2, 2, 2)
+                self.layout1.addWidget(self.edit1_1, 4, 4, 2, 3)
+                self.layout1.addWidget(self.edit1_2, 6, 4, 2, 3)
+                self.layout1.addWidget(self.button1, 9, 4, 2, 2)
+                self.right_widget.addWidget(self.centralWidget1)
 
             elif i == 2:
-                self.centralWidget2=QtWidgets.QWidget()
+                self.centralWidget2 = QtWidgets.QWidget()
                 self.centralWidget2.setStyleSheet('''background:#F0FFFF;border-width:0;''');
                 self.layout2 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
                 self.centralWidget2.setLayout(self.layout2)
@@ -207,37 +274,37 @@ class LeftTabWidget(QWidget):
                 self.label2_2.setTextFormat(QtCore.Qt.AutoText)
                 self.label2_2.setText("")
                 self.label2_2.setAlignment(Qt.AlignCenter)
-                
+
                 self.layout2.setColumnStretch(0, 1)
                 self.layout2.setColumnStretch(1, 2)
                 self.layout2.setColumnStretch(2, 2)
-                self.layout2.setColumnStretch(3, 1)            
+                self.layout2.setColumnStretch(3, 1)
                 self.layout2.setColumnStretch(4, 2)
                 self.layout2.setColumnStretch(5, 2)
                 self.layout2.setColumnStretch(6, 1)
-                self.layout2.setRowStretch(0,2)
-                self.layout2.setRowStretch(1,2)
-                self.layout2.setRowStretch(2,2)
-                self.layout2.setRowStretch(3,2)
-                self.layout2.setRowStretch(4,2)
-                self.layout2.setRowStretch(5,2)
-                self.layout2.setRowStretch(6,2)
-                self.layout2.setRowStretch(7,2)
-                self.layout2.setRowStretch(8,2)
+                self.layout2.setRowStretch(0, 2)
+                self.layout2.setRowStretch(1, 2)
+                self.layout2.setRowStretch(2, 2)
+                self.layout2.setRowStretch(3, 2)
+                self.layout2.setRowStretch(4, 2)
+                self.layout2.setRowStretch(5, 2)
+                self.layout2.setRowStretch(6, 2)
+                self.layout2.setRowStretch(7, 2)
+                self.layout2.setRowStretch(8, 2)
                 self.layout2.setHorizontalSpacing(5)
                 self.layout2.setVerticalSpacing(5)
-                self.layout2.addWidget(self.label2_1, 0,0,1,7)
-                self.layout2.addWidget(self.button2_7, 2,4,1,2)
-                self.layout2.addWidget(self.button2_1, 2,1,1,2)
-                self.layout2.addWidget(self.button2_2, 4,1,1,2)
-                self.layout2.addWidget(self.button2_3, 4,4,1,2)
-                self.layout2.addWidget(self.button2_4, 6,1,1,2)
-                self.layout2.addWidget(self.button2_5, 6,4,1,2)
-                self.layout2.addWidget(self.button2_6, 8,4,1,2)
-                self.layout2.addWidget(self.comboBox2, 8,1,1,2)
-                self.layout2.addWidget(self.label2_2, 9,1,1,7)
+                self.layout2.addWidget(self.label2_1, 0, 0, 1, 7)
+                self.layout2.addWidget(self.button2_7, 2, 4, 1, 2)
+                self.layout2.addWidget(self.button2_1, 2, 1, 1, 2)
+                self.layout2.addWidget(self.button2_2, 4, 1, 1, 2)
+                self.layout2.addWidget(self.button2_3, 4, 4, 1, 2)
+                self.layout2.addWidget(self.button2_4, 6, 1, 1, 2)
+                self.layout2.addWidget(self.button2_5, 6, 4, 1, 2)
+                self.layout2.addWidget(self.button2_6, 8, 4, 1, 2)
+                self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
+                self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
                 self.right_widget.addWidget(self.centralWidget2)
-# '硬件设置'
+            # '硬件设置'
             elif i == 7:
                 self.centralWidget7 = QtWidgets.QWidget()
                 self.centralWidget7.setStyleSheet('''background:#F0FFFF;border-width:0;''');
@@ -276,7 +343,6 @@ class LeftTabWidget(QWidget):
                                                 font-family:等线;''')
                 self.label7_4.setAlignment(Qt.AlignCenter)
 
-
                 self.label7_5 = QtWidgets.QLabel()
                 self.label7_5.setTextFormat(QtCore.Qt.AutoText)
                 self.label7_5.setText("开关面板展示")
@@ -292,6 +358,66 @@ class LeftTabWidget(QWidget):
                 self.layout7.addWidget(self.label7_5, 2, 2, 1, 2)
 
                 self.right_widget.addWidget(self.centralWidget7)
+
+            elif i == 3:
+                self.label3_1 = QtWidgets.QLabel()
+                self.label3_1.setTextFormat(QtCore.Qt.AutoText)
+                self.label3_1.setText("抓取")
+                self.label3_1.setStyleSheet('''color:white;font-size:23px;background:rgb(100,100,100,80;background:#454545);
+                                                            font-family:等线;''');
+                self.label3_1.setAlignment(Qt.AlignCenter)
+
+                self.label3_2 = QtWidgets.QLabel()
+                self.label3_2.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('指南针.png').scaled(self.label3_2.width() * 0.25,
+                                                                               self.label3_2.height() * 0.35)
+                self.label3_2.setPixmap(pixmap)
+
+                self.label3_3 = QtWidgets.QLabel()
+                self.label3_3.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('放大镜.png').scaled(self.label3_3.width() * 0.25,
+                                                                               self.label3_3.height() * 0.35)
+                self.label3_3.setPixmap(pixmap)
+
+                self.centralWidget3 = QtWidgets.QWidget()
+                self.centralWidget3.setStyleSheet('''background:#636363;border-width:0;''');
+                self.layout3 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget3.setLayout(self.layout3)
+
+                self.button3_1 = QtWidgets.QPushButton()
+                self.button3_1.setText("标定航点")
+                self.button3_1.setFixedSize(200, 40)
+                self.button3_1.setStyleSheet('''
+                                QPushButton{
+                                    border:none;color:white;
+                                    border-bottom:1px solid white;
+                                    font-size:20px;
+                                    font-weight:700;
+                                    font-family:等线;
+                                }
+                            ''')
+
+                self.button3_2 = QtWidgets.QPushButton()
+                self.button3_2.setText("检测物体并抓取")
+                self.button3_2.setFixedSize(200, 40)
+                self.button3_2.setStyleSheet('''
+                                QPushButton{
+                                    border:none;color:white;
+                                    border-bottom:1px solid white;
+                                    font-size:20px;
+                                    font-weight:700;
+                                    font-family:等线;
+                                }
+                            ''')
+
+                self.layout3.addWidget(QtWidgets.QWidget(), 1, 0, 1, 10)
+                self.layout3.addWidget(QtWidgets.QWidget(), 5, 0, 2, 10)
+                self.layout3.addWidget(self.label3_1, 0, 0, 1, 9)
+                self.layout3.addWidget(self.label3_2, 2, 2, 1, 1)
+                self.layout3.addWidget(self.label3_3, 2, 6, 1, 1)
+                self.layout3.addWidget(self.button3_1, 4, 2, 1, 2)
+                self.layout3.addWidget(self.button3_2, 4, 6, 1, 2)
+                self.right_widget.addWidget(self.centralWidget3)
 
             # '遇到问题'
             elif i == 9:
@@ -351,10 +477,10 @@ class LeftTabWidget(QWidget):
 
                 self.right_widget.addWidget(self.centralWidget9)
 
-            
+
             # '联系我们'
             elif i == 10:
-                self.centralWidget10=QtWidgets.QWidget()
+                self.centralWidget10 = QtWidgets.QWidget()
                 self.centralWidget10.setStyleSheet('''background:white;border-width:0;''');
 
                 self.layout10 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
@@ -447,93 +573,116 @@ class LeftTabWidget(QWidget):
                                                 font-family:等线;''');
                 self.label10_11.setAlignment(Qt.AlignCenter)
 
-                #self.layout10.setColumnStretch(0, 1)
-                self.layout10.addWidget(self.label10_1,1,1,1,6)
+                # self.layout10.setColumnStretch(0, 1)
+                self.layout10.addWidget(self.label10_1, 1, 1, 1, 6)
 
-                self.layout10.addWidget(self.label10_2,2,1)
-                self.layout10.addWidget(self.label10_3,3,1,2,1)
+                self.layout10.addWidget(self.label10_2, 2, 1)
+                self.layout10.addWidget(self.label10_3, 3, 1, 2, 1)
 
-                self.layout10.addWidget(self.label10_4,2,2)
-                self.layout10.addWidget(self.label10_5,3,2,2,1)
+                self.layout10.addWidget(self.label10_4, 2, 2)
+                self.layout10.addWidget(self.label10_5, 3, 2, 2, 1)
 
-                self.layout10.addWidget(self.label10_6,2,3)
-                self.layout10.addWidget(self.label10_7,3,3,2,1)
+                self.layout10.addWidget(self.label10_6, 2, 3)
+                self.layout10.addWidget(self.label10_7, 3, 3, 2, 1)
 
-                self.layout10.addWidget(self.label10_8,2,4)
-                self.layout10.addWidget(self.label10_9,3,4,2,1)
+                self.layout10.addWidget(self.label10_8, 2, 4)
+                self.layout10.addWidget(self.label10_9, 3, 4, 2, 1)
 
-                self.layout10.addWidget(self.label10_10,2,5)
-                self.layout10.addWidget(self.label10_11,3,5,2,1)
+                self.layout10.addWidget(self.label10_10, 2, 5)
+                self.layout10.addWidget(self.label10_11, 3, 5, 2, 1)
 
                 self.right_widget.addWidget(self.centralWidget10)
 
 
             else:
-                if i!= 0 and i != 4 and i != 8:
-                    self.centralWidget0=QtWidgets.QWidget()
+                if i != 0 and i != 4 and i != 8:
+                    self.centralWidget0 = QtWidgets.QWidget()
                     self.centralWidget0.setStyleSheet('''background:white;border-width:0;''');
                     self.right_widget.addWidget(self.centralWidget0)
 
-		
+    def button1_1click(self):
+        vel = 0
+        time = 0
+
+        if self.edit1_1.text() == "":
+            vel = 0.5
+        else:
+            vel = float(self.edit1_1.text())
+
+        if self.edit1_2.text() == "":
+            time = 60
+        else:
+            time = int(self.edit1_2.text())
+
+        self.setConfig(vel,time)
+
+        os.system(free_walk_cmd)
+
     def button2_1click(self):
         print("roslaunch wpb_home_tutorials gmapping.launch")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch wpb_home_tutorials gmapping.launch\"'")
-  
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch wpb_home_tutorials gmapping.launch\"'")
+
     def button2_7click(self):
         print("rosrun robot_sim_demo keyboard_vel_ctrl")
-        #os.system("rosrun robot_sim_demo keyboard_vel_ctrl")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun robot_sim_demo keyboard_vel_ctrl\"'")      
+        # os.system("rosrun robot_sim_demo keyboard_vel_ctrl")
+        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun robot_sim_demo keyboard_vel_ctrl\"'")
 
     def button2_2click(self):
         print("rosrun map_server map_saver -f map")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun map_server map_saver -f map&&cp map.yaml /home/zzx/catkin_ws/src/wpb_home/wpb_home_tutorials/maps/map.yaml&&cp map.pgm /home/zzx/catkin_ws/src/wpb_home/wpb_home_tutorials/maps/map.pgm\"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun map_server map_saver -f map&&cp map.yaml /home/zzx/catkin_ws/src/wpb_home/wpb_home_tutorials/maps/map.yaml&&cp map.pgm /home/zzx/catkin_ws/src/wpb_home/wpb_home_tutorials/maps/map.pgm\"'")
 
     def button2_3click(self):
         print("roslaunch waterplus_map_tools add_waypoint.launch")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch waterplus_map_tools add_waypoint.launch\"'")
-	
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch waterplus_map_tools add_waypoint.launch\"'")
+
     def button2_4click(self):
         print("rosrun waterplus_map_tools wp_saver")
         os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun waterplus_map_tools wp_saver\"'")
         time.sleep(2)
         self.comboBox2.clear()
-        if os.path.exists('/home/zzx/catkin_ws/waypoints.xml') == False :
-            file = open('/home/zzx/catkin_ws/waypoints.xml','w')
+        if os.path.exists('/home/zzx/catkin_ws/waypoints.xml') == False:
+            file = open('/home/zzx/catkin_ws/waypoints.xml', 'w')
             file.write('<Waterplus>\n</Waterplus>')
             file.close()
-        f=open('/home/zzx/catkin_ws/waypoints.xml', 'r')
-        newFile=re.sub(r"(?<=<Name>).+?(?=</Name>)",indexRename,f.read())
+        f = open('/home/zzx/catkin_ws/waypoints.xml', 'r')
+        newFile = re.sub(r"(?<=<Name>).+?(?=</Name>)", indexRename, f.read())
         f.close()
-        f=open('/home/zzx/catkin_ws/waypoints.xml', 'w')
+        f = open('/home/zzx/catkin_ws/waypoints.xml', 'w')
         f.write(newFile)
         f.close()
         self.renameIndex = 1
-        f=open('/home/zzx/catkin_ws/waypoints.xml', 'r')
-        pointlist=re.findall(r"(?<=<Name>).+?(?=</Name>)", f.read(), re.S)
+        f = open('/home/zzx/catkin_ws/waypoints.xml', 'r')
+        pointlist = re.findall(r"(?<=<Name>).+?(?=</Name>)", f.read(), re.S)
         print(pointlist)
         self.comboBox2.addItems(pointlist)
         f.close()
 
     def button2_5click(self):
         print("roslaunch waterplus_map_tools wpb_home_nav_test.launch")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch waterplus_map_tools wpb_home_nav_test.launch; exec bash\"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch waterplus_map_tools wpb_home_nav_test.launch; exec bash\"'")
         print("rosrun waterplus_map_tools wp_nav_test")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun waterplus_map_tools wp_nav_test; exec bash\"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun waterplus_map_tools wp_nav_test; exec bash\"'")
 
     def button2_6click(self):
-        print(self.comboBox2.currentIndex()+1)
-	#get to the chosed point
+        print(self.comboBox2.currentIndex() + 1)
+        # get to the chosed point
         pointoutput = open('/home/zzx/catkin_ws/point.txt', 'w')
-        pointoutput.write(str(self.comboBox2.currentIndex()+1))
+        pointoutput.write(str(self.comboBox2.currentIndex() + 1))
         pointoutput.close()
 
-	
-    def main():
-        ''' '''
-        app = QApplication(sys.argv)
-        main_wnd = LeftTabWidget()
-        main_wnd.show()
-        app.exec()
+def main():
+    ''' '''
+    app = QApplication(sys.argv)
 
-    if __name__ == '__main__':
-        main()
+    main_wnd = LeftTabWidget()
+    main_wnd.show()
+
+    app.exec()
+
+if __name__ == '__main__':
+    main()
