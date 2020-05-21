@@ -304,6 +304,7 @@ class LeftTabWidget(QWidget):
                 self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
                 self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
                 self.right_widget.addWidget(self.centralWidget2)
+            
             # '硬件设置'
             elif i == 7:
                 self.centralWidget7 = QtWidgets.QWidget()
@@ -477,7 +478,6 @@ class LeftTabWidget(QWidget):
 
                 self.right_widget.addWidget(self.centralWidget9)
 
-
             # '联系我们'
             elif i == 10:
                 self.centralWidget10 = QtWidgets.QWidget()
@@ -535,7 +535,7 @@ class LeftTabWidget(QWidget):
 
                 self.label10_7 = QtWidgets.QLabel()
                 self.label10_7.setTextFormat(QtCore.Qt.AutoText)
-                self.label10_7.setText("组员：杨昶\n邮箱：yc@hotmail.com\n负责：部分避障与自由行走模块\n部分UI架构模块\n讨论实现物体检测与抓取\n格言：")
+                self.label10_7.setText("组员：杨昶\n邮箱：17373356@buaa.edu.cn\n负责：部分避障与自由行走模块\n部分UI架构模块\n讨论实现物体检测与抓取\n格言：吃饭睡觉乐呵呵")
                 self.label10_7.setStyleSheet('''color:black;font-size:23px;background:rgb(0,00,0,0);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''');
@@ -573,7 +573,6 @@ class LeftTabWidget(QWidget):
                                                 font-family:等线;''');
                 self.label10_11.setAlignment(Qt.AlignCenter)
 
-                # self.layout10.setColumnStretch(0, 1)
                 self.layout10.addWidget(self.label10_1, 1, 1, 1, 6)
 
                 self.layout10.addWidget(self.label10_2, 2, 1)
@@ -593,12 +592,13 @@ class LeftTabWidget(QWidget):
 
                 self.right_widget.addWidget(self.centralWidget10)
 
-
             else:
                 if i != 0 and i != 4 and i != 8:
                     self.centralWidget0 = QtWidgets.QWidget()
                     self.centralWidget0.setStyleSheet('''background:white;border-width:0;''');
                     self.right_widget.addWidget(self.centralWidget0)
+
+
 
     def button1_1click(self):
         vel = 0
