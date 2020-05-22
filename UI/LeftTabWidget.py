@@ -127,6 +127,9 @@ class LeftTabWidget(QWidget):
                     self.item.setSizeHint(QSize(60, 65))
                     self.item.setTextAlignment(Qt.AlignCenter)  # 居中显示
 
+            self.item.setSizeHint(QSize(60, 65))
+            self.item.setTextAlignment(Qt.AlignCenter)  # 居中显示
+
             if i == 1:
                 self.centralWidget1 = QtWidgets.QWidget()
                 self.centralWidget1.setStyleSheet('''background:black;border-width:0;''');
@@ -154,20 +157,20 @@ class LeftTabWidget(QWidget):
                 self.label1_1 = QtWidgets.QLabel()  # 设置label
                 self.label1_1.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_1.setText("速度")
-                self.label1_1.setStyleSheet('''color:white;font-size:23px; font-family:等线;''');
+                self.label1_1.setStyleSheet('''color:white;font-size:26px; font-family:等线;''')
                 self.label1_1.setAlignment(Qt.AlignCenter)
 
                 self.label1_2 = QtWidgets.QLabel()
                 self.label1_2.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_2.setText("时间")
-                self.label1_2.setStyleSheet('''color:white;font-size:23px; font-family:等线;''');
+                self.label1_2.setStyleSheet('''color:white;font-size:26px; font-family:等线;''')
                 self.label1_2.setAlignment(Qt.AlignCenter)
 
                 self.label1_3 = QtWidgets.QLabel()
                 self.label1_3.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_3.setText("扫地")
-                self.label1_3.setStyleSheet('''color:white;font-size:23px;background:rgb(100,100,100,80;background:#454545);
-                                                font-family:等线;''');
+                self.label1_3.setStyleSheet('''color:white;font-size:26px;background:rgb(100,100,100,80;background:#454545);
+                                                font-family:等线;''')
                 self.label1_3.setAlignment(Qt.AlignCenter)
 
                 self.button1 = QtWidgets.QPushButton()
@@ -304,11 +307,157 @@ class LeftTabWidget(QWidget):
                 self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
                 self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
                 self.right_widget.addWidget(self.centralWidget2)
+
+            elif i == 5:
+                self.centralWidget5 = QtWidgets.QWidget()
+                self.centralWidget5.setStyleSheet('''background:#F0FFFF;border-width:0;''')
+                self.layout5 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget5.setLayout(self.layout5)
+
+                self.label5_0 = QtWidgets.QLabel()
+                self.label5_0.setTextFormat(QtCore.Qt.AutoText)
+                self.label5_0.setText("使用方法")
+                self.label5_0.setStyleSheet('''color:black;font-size:23px;background:#F0FFFF;
+                                                font-family:等线;''')
+                self.label5_0.setAlignment(Qt.AlignCenter)
+
+                self.label5_1 = QtWidgets.QLabel()
+                self.label5_1.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('robot.png').scaled(self.label5_1.width() * 0.07, self.label5_1.height() * 0.10)
+                self.label5_1.setPixmap(pixmap)
+
+                self.label5_2 = QtWidgets.QLabel()
+                self.label5_2.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('避障.png').scaled(self.label5_2.width() * 0.07, self.label5_2.height() * 0.10)
+                self.label5_2.setPixmap(pixmap)
+
+                self.label5_3 = QtWidgets.QLabel()
+                self.label5_3.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('导航.png').scaled(self.label5_3.width() * 0.07, self.label5_3.height() * 0.10)
+                self.label5_3.setPixmap(pixmap)
+
+                self.label5_4 = QtWidgets.QLabel()
+                self.label5_4.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('抓取.png').scaled(self.label5_4.width() * 0.07, self.label5_4.height() * 0.10)
+                self.label5_4.setPixmap(pixmap)
+
+                self.label5_5 = QtWidgets.QLabel()  # 设置label
+                self.label5_5.setTextFormat(QtCore.Qt.AutoText)
+                self.label5_5.setText('''
+                                        控制界面：进行功能选取、操纵机器人前行\n
+                                        打开机器人：按下底盘上的开关按钮使之变亮\n
+                                        关闭机器人：按下底盘上的开关按钮使之变暗\n
+                                        USB连接： 麦克风、相机、雷达、以太网等\n
+                                       （具体接口参照用户手册）''')
+                self.label5_5.setStyleSheet('''color:black;font-size:14px; font-family:等线;''')
+                self.label5_5.setAlignment(Qt.AlignLeft)
+
+                self.label5_6 = QtWidgets.QLabel()  # 设置label
+                self.label5_6.setTextFormat(QtCore.Qt.AutoText)
+                self.label5_6.setText('''
+                                        避障：在给定区域内随机行走，自主避障\n
+                                        输入速度(m/s)，机器人将以该线速度行走\n
+                                        输入时间(s)，机器人在限制时间段内行走\n
+                                        点击开始按钮，机器人开始行走（输入的时间与速度\n
+                                        需符合给定要求）''')
+                self.label5_6.setStyleSheet('''color:black;font-size:14px; font-family:等线;''')
+                self.label5_6.setAlignment(Qt.AlignLeft)
+
+                self.label5_7 = QtWidgets.QLabel()  # 设置label
+                self.label5_7.setTextFormat(QtCore.Qt.AutoText)
+                self.label5_7.setText('''
+                                        导航：机器人行走至目标航点\n
+                                        点击建立地图按钮，在图形化界面操纵机器人行走\n
+                                        点击保存地图按钮，保存刚刚建立的地图\n
+                                        点击标定航点按钮，在地图上标定目标航点\n
+                                        点击保存航点按钮，保存刚刚标定的航点信息\n
+                                        下拉菜单中可选择机器人行走的目标航点\n
+                                        点击开始导航按钮，机器人将行走至目标航点\n
+                                        注意事项：\n
+                                        若已经构建过地图且没有重新构建，则不需要构建地图\n
+                                        构建的地图应覆盖所在区域\n
+                                        地图保存完毕前不要关掉虚拟环境\n
+                                        航点保存完毕前不要关掉虚拟环境\n
+                                        ''')
+                self.label5_7.setStyleSheet('''color:black;font-size:14px; font-family:等线;''')
+                self.label5_7.setAlignment(Qt.AlignLeft)
+
+                self.label5_8 = QtWidgets.QLabel()  # 设置label
+                self.label5_8.setTextFormat(QtCore.Qt.AutoText)
+                self.label5_8.setText('''
+                                        抓取：机器人识别目标物体并进行抓取\n
+                                        点击建立航点按钮，带领机器人用语音标定航点\n
+                                        点击开始检测并抓取按钮，机器人将识别出目标物体\n
+                                        并完成抓取动作\n
+                                        抓取结束后机器人将回到开始识别的地点并将物体递给用户\n
+                                        注意事项:\n
+                                        选择的抓取物品需满足要求(参考注意事项)\n''')
+                self.label5_8.setStyleSheet('''color:black;font-size:14px; font-family:等线;''')
+                self.label5_8.setAlignment(Qt.AlignLeft)
+
+                self.layout5.addWidget(self.label5_0, 0, 0, 1, 8)
+                self.layout5.addWidget(self.label5_1, 1, 0, 1, 4)
+                self.layout5.addWidget(self.label5_2, 1, 4, 1, 4)
+                self.layout5.addWidget(self.label5_3, 5, 0, 1, 4)
+                self.layout5.addWidget(self.label5_4, 5, 4, 1, 4)
+                self.layout5.addWidget(self.label5_5, 2, 0, 3, 4)
+                self.layout5.addWidget(self.label5_6, 2, 4, 3, 4)
+                self.layout5.addWidget(self.label5_7, 6, 0, 3, 4)
+                self.layout5.addWidget(self.label5_8, 6, 4, 3, 4)
+                self.right_widget.addWidget(self.centralWidget5)
+
+            elif i == 6:
+                self.centralWidget6 = QtWidgets.QWidget()
+                self.centralWidget6.setStyleSheet('''background:#F0FFFF;border-width:0;''');
+
+                self.layout6 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget6.setLayout(self.layout6)
+
+                ##start coding
+                self.label6_1 = QtWidgets.QLabel()
+                self.label6_1.setTextFormat(QtCore.Qt.AutoText)
+                self.label6_1.setText("注意事项")
+                self.label6_1.setStyleSheet('''color:black;font-size:23px;background:#1E90FF;
+                                                font-family:Times new Romans;''');
+                self.label6_1.setAlignment(Qt.AlignCenter)
+
+                self.label6_2 = QtWidgets.QLabel()
+                self.label6_2.setTextFormat(QtCore.Qt.AutoText)
+                self.label6_2.setText('环境要求:\n\
+                1、机器人一定要在室内运行，且空间不能过于狭窄。\n\
+                2、最好时刻保证机器人的工作温度在15°C到35°C间。\n\
+                3、避免与雨水、雾、积水以及任何其他液体接触等。\n\
+                4、保证机器人所处环境地面坚硬、平滑无较大裂痕。\n\
+                5、所处环境如有坡道，要求坡道的坡度不大于15°。')
+                self.label6_2.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label6_2.setAlignment(Qt.AlignCenter)
+
+                self.label6_3 = QtWidgets.QLabel()
+                self.label6_3.setTextFormat(QtCore.Qt.AutoText)
+                self.label6_3.setText("避免损伤:\n\
+                1、设定的移动速率不超过0.2m/s，避免因机器人速度过快造成的损伤。\n\
+                2、机器人组成部件均为坚硬物体，避免机器人接近地图边界时的碰撞。\n\
+                3、抓取物品为非敞口含液体容器、非陶瓷玻璃制品、重量需小于10kg。\n\
+                4、注意机械臂在抓取时的姿态和力度，如有意外发生需及时停止抓取。\n")
+                self.label6_3.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
+                                                border-width:5;border-style:ridge;border-color:#1E90FF;
+                                                font-family:等线;''')
+                self.label6_3.setAlignment(Qt.AlignCenter)
+
+                self.layout6.addWidget(self.label6_1, 0, 0, 1, 4)
+                self.layout6.addWidget(self.label6_2, 1, 0, 1, 2)
+                self.layout6.addWidget(self.label6_3, 1, 2, 1, 2)
+                # self.layout6.addWidget(self.label6_4,2,0,1,2)
+                # self.layout6.addWidget(self.label6_5,2,2,1,2)
+
+                self.right_widget.addWidget(self.centralWidget6)
             
             # '硬件设置'
             elif i == 7:
                 self.centralWidget7 = QtWidgets.QWidget()
-                self.centralWidget7.setStyleSheet('''background:#F0FFFF;border-width:0;''');
+                self.centralWidget7.setStyleSheet('''background:#F0FFFF;border-width:0;''')
 
                 self.layout7 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
                 self.centralWidget7.setLayout(self.layout7)
