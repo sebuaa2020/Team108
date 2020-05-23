@@ -716,7 +716,7 @@ class LeftTabWidget(QWidget):
 
                 self.label10_11 = QtWidgets.QLabel()
                 self.label10_11.setTextFormat(QtCore.Qt.AutoText)
-                self.label10_11.setText("组员：葛毅飞\n邮箱：gyfhhxx1@163.com\n负责：部分导航模块\n部分UI架构模块\n讨论实现物体检测与抓取\n格言：")
+                self.label10_11.setText("组员：葛毅飞\n邮箱：gyfhhxx1@163.com\n负责：部分导航模块\n部分UI架构模块\n讨论实现物体检测与抓取\n格言：不掉头发！")
                 self.label10_11.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,0,0);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''');
