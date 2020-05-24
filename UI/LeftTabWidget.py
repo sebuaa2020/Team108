@@ -131,52 +131,62 @@ class LeftTabWidget(QWidget):
             self.item.setTextAlignment(Qt.AlignCenter)  # 居中显示
 
             if i == 1:
+                # 创建整体背景
                 self.centralWidget1 = QtWidgets.QWidget()
-                self.centralWidget1.setStyleSheet('''background:black;border-width:0;''');
-                self.layout1 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget1.setStyleSheet('''background:white;border-width:0;''');
+                # 创建左侧部件的网格布局层
+                self.layout1 = QtWidgets.QGridLayout()
                 self.centralWidget1.setLayout(self.layout1)
 
+                # 创建机器人最大运行速度的输入框
                 self.edit1_1 = QtWidgets.QLineEdit()
                 self.edit1_1.setPlaceholderText("请输入速度(两位小数,0.0-1.0)")
-                self.edit1_1.setStyleSheet('''color:white;background:transparent;border-width:0;
-                                                border-style:outset;border-bottom:1px solid white;
+                self.edit1_1.setStyleSheet('''color:black;background:transparent;border-width:0;
+                                                border-style:outset;border-bottom:1px solid black;
                                                 font-size:20px; font-family:等线;''')
+                # 利用正则匹配限定输入
                 self.vel_reg = QRegExp(r"^(0)|(0\.[0-9])|(1)|(1\.0)$")
                 self.vel_validator = QRegExpValidator(self.vel_reg, self.edit1_1)
                 self.edit1_1.setValidator(self.vel_validator)
 
+                # 创建避障任务巡航时间的输入框
                 self.edit1_2 = QtWidgets.QLineEdit()
                 self.edit1_2.setPlaceholderText("请输入时间(三位整数)")
-                self.edit1_2.setStyleSheet('''color:white;background:transparent;border-width:0;
-                                                border-style:outset;border-bottom:1px solid white;
+                self.edit1_2.setStyleSheet('''color:black;background:transparent;border-width:0;
+                                                border-style:outset;border-bottom:1px solid black;
                                                 font-size:20px; font-family:等线;''')
+                # 利用正则匹配限定巡航时间
                 self.time_reg = QRegExp("^[0-9]{3}$")
                 self.time_validator = QRegExpValidator(self.time_reg, self.edit1_2)
                 self.edit1_2.setValidator(self.time_validator)
 
-                self.label1_1 = QtWidgets.QLabel()  # 设置label
+                # 设置速度提示标签：label1_1
+                self.label1_1 = QtWidgets.QLabel()
                 self.label1_1.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_1.setText("速度")
-                self.label1_1.setStyleSheet('''color:white;font-size:26px; font-family:等线;''')
+                self.label1_1.setStyleSheet('''color:black;font-size:26px; font-family:等线;''')
                 self.label1_1.setAlignment(Qt.AlignCenter)
 
+                # 设置时间提示标签：label1_2
                 self.label1_2 = QtWidgets.QLabel()
                 self.label1_2.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_2.setText("时间")
-                self.label1_2.setStyleSheet('''color:white;font-size:26px; font-family:等线;''')
+                self.label1_2.setStyleSheet('''color:black;font-size:26px; font-family:等线;''')
                 self.label1_2.setAlignment(Qt.AlignCenter)
 
+                # 设置扫地标签：label1_3
                 self.label1_3 = QtWidgets.QLabel()
                 self.label1_3.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_3.setText("扫地")
-                self.label1_3.setStyleSheet('''color:white;font-size:26px;background:rgb(100,100,100,80;background:#454545);
+                self.label1_3.setStyleSheet('''color:black;font-size:26px;background:rgb(100,100,100,80;background:#454545);
                                                 font-family:等线;''')
                 self.label1_3.setAlignment(Qt.AlignCenter)
 
+                # 设置调用巡航任务接口的按钮button1
                 self.button1 = QtWidgets.QPushButton()
                 self.button1.setText("开始")
                 self.button1.setFixedSize(100, 40)
-                self.button1.setStyleSheet('''QPushButton{background:#EE9A00;border-radius:10px;font-family:等线;
+                self.button1.setStyleSheet('''QPushButton{background:#1E90FF;border-radius:10px;font-family:等线;
                                                font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
                 self.button1.clicked.connect(self.button1_1click)
 
@@ -307,6 +317,73 @@ class LeftTabWidget(QWidget):
                 self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
                 self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
                 self.right_widget.addWidget(self.centralWidget2)
+
+            elif i == 3:
+                # label3_1 设置标题相关属性
+                self.label3_1 = QtWidgets.QLabel()
+                self.label3_1.setTextFormat(QtCore.Qt.AutoText)
+                self.label3_1.setText("抓取")
+                self.label3_1.setStyleSheet('''color:#black;font-size:23px;background:rgb(00,00,00,0;background:#1E90FF);
+                                                            font-family:等线;''');
+                self.label3_1.setAlignment(Qt.AlignCenter)
+
+                # label3_2 指南针图标相关属性
+                self.label3_2 = QtWidgets.QLabel()
+                self.label3_2.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('指南针.png').scaled(self.label3_2.width() * 0.25,
+                                                                               self.label3_2.height() * 0.35)
+                self.label3_2.setPixmap(pixmap)
+
+                # label3_3 放大镜图标相关属性
+                self.label3_3 = QtWidgets.QLabel()
+                self.label3_3.setAlignment(Qt.AlignCenter)
+                pixmap = QPixmap('放大镜.png').scaled(self.label3_3.width() * 0.25,
+                                                                               self.label3_3.height() * 0.35)
+                self.label3_3.setPixmap(pixmap)
+
+                self.centralWidget3 = QtWidgets.QWidget()
+                 # 更改颜色
+                self.centralWidget3.setStyleSheet('''background:white;border-width:0;''');
+                self.layout3 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
+                self.centralWidget3.setLayout(self.layout3)
+
+                # 设置标定航点任务的按钮
+                self.button3_1 = QtWidgets.QPushButton()
+                self.button3_1.setText("标定航点")
+                self.button3_1.setFixedSize(200, 40)
+                self.button3_1.setStyleSheet('''
+                                QPushButton{
+                                    border:none;color:#1E90FF;
+                                    border-bottom:1px solid #1E90FF;
+                                    font-size:20px;
+                                    font-weight:700;
+                                    font-family:等线;
+                                }
+                            ''')
+
+                # 设置检测物体并抓取任务的按钮
+                self.button3_2 = QtWidgets.QPushButton()
+                self.button3_2.setText("检测物体并抓取")
+                self.button3_2.setFixedSize(200, 40)
+                self.button3_2.setStyleSheet('''
+                                QPushButton{
+                                    border:none;color:#1E90FF;
+                                    border-bottom:1px solid #1E90FF;
+                                    font-size:20px;
+                                    font-weight:700;
+                                    font-family:等线;
+                                }
+                            ''')
+
+                # 将所有元素添加到抓取任务的画板中
+                self.layout3.addWidget(QtWidgets.QWidget(), 1, 0, 1, 10)
+                self.layout3.addWidget(QtWidgets.QWidget(), 5, 0, 2, 10)
+                self.layout3.addWidget(self.label3_1, 0, 0, 1, 9)
+                self.layout3.addWidget(self.label3_2, 2, 2, 1, 1)
+                self.layout3.addWidget(self.label3_3, 2, 6, 1, 1)
+                self.layout3.addWidget(self.button3_1, 4, 2, 1, 2)
+                self.layout3.addWidget(self.button3_2, 4, 6, 1, 2)
+                self.right_widget.addWidget(self.centralWidget3)
 
             elif i == 5:
                 self.centralWidget5 = QtWidgets.QWidget()
@@ -453,7 +530,7 @@ class LeftTabWidget(QWidget):
                 # self.layout6.addWidget(self.label6_5,2,2,1,2)
 
                 self.right_widget.addWidget(self.centralWidget6)
-            
+
             # '硬件设置'
             elif i == 7:
                 self.centralWidget7 = QtWidgets.QWidget()
@@ -509,65 +586,7 @@ class LeftTabWidget(QWidget):
 
                 self.right_widget.addWidget(self.centralWidget7)
 
-            elif i == 3:
-                self.label3_1 = QtWidgets.QLabel()
-                self.label3_1.setTextFormat(QtCore.Qt.AutoText)
-                self.label3_1.setText("抓取")
-                self.label3_1.setStyleSheet('''color:white;font-size:23px;background:rgb(100,100,100,80;background:#454545);
-                                                            font-family:等线;''');
-                self.label3_1.setAlignment(Qt.AlignCenter)
 
-                self.label3_2 = QtWidgets.QLabel()
-                self.label3_2.setAlignment(Qt.AlignCenter)
-                pixmap = QPixmap('指南针.png').scaled(self.label3_2.width() * 0.25,
-                                                                               self.label3_2.height() * 0.35)
-                self.label3_2.setPixmap(pixmap)
-
-                self.label3_3 = QtWidgets.QLabel()
-                self.label3_3.setAlignment(Qt.AlignCenter)
-                pixmap = QPixmap('放大镜.png').scaled(self.label3_3.width() * 0.25,
-                                                                               self.label3_3.height() * 0.35)
-                self.label3_3.setPixmap(pixmap)
-
-                self.centralWidget3 = QtWidgets.QWidget()
-                self.centralWidget3.setStyleSheet('''background:#636363;border-width:0;''');
-                self.layout3 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
-                self.centralWidget3.setLayout(self.layout3)
-
-                self.button3_1 = QtWidgets.QPushButton()
-                self.button3_1.setText("标定航点")
-                self.button3_1.setFixedSize(200, 40)
-                self.button3_1.setStyleSheet('''
-                                QPushButton{
-                                    border:none;color:white;
-                                    border-bottom:1px solid white;
-                                    font-size:20px;
-                                    font-weight:700;
-                                    font-family:等线;
-                                }
-                            ''')
-
-                self.button3_2 = QtWidgets.QPushButton()
-                self.button3_2.setText("检测物体并抓取")
-                self.button3_2.setFixedSize(200, 40)
-                self.button3_2.setStyleSheet('''
-                                QPushButton{
-                                    border:none;color:white;
-                                    border-bottom:1px solid white;
-                                    font-size:20px;
-                                    font-weight:700;
-                                    font-family:等线;
-                                }
-                            ''')
-
-                self.layout3.addWidget(QtWidgets.QWidget(), 1, 0, 1, 10)
-                self.layout3.addWidget(QtWidgets.QWidget(), 5, 0, 2, 10)
-                self.layout3.addWidget(self.label3_1, 0, 0, 1, 9)
-                self.layout3.addWidget(self.label3_2, 2, 2, 1, 1)
-                self.layout3.addWidget(self.label3_3, 2, 6, 1, 1)
-                self.layout3.addWidget(self.button3_1, 4, 2, 1, 2)
-                self.layout3.addWidget(self.button3_2, 4, 6, 1, 2)
-                self.right_widget.addWidget(self.centralWidget3)
 
             # '遇到问题'
             elif i == 9:
@@ -752,12 +771,13 @@ class LeftTabWidget(QWidget):
     def button1_1click(self):
         vel = 0
         time = 0
-
+        # 设置运行的速度，default值是0.5
         if self.edit1_1.text() == "":
             vel = 0.5
         else:
             vel = float(self.edit1_1.text())
 
+        # 设置运行的时间，default值是0.5
         if self.edit1_2.text() == "":
             time = 60
         else:
@@ -765,6 +785,8 @@ class LeftTabWidget(QWidget):
 
         self.setConfig(vel,time)
 
+        print("roslaunch wpb_home_apps 6_path_plan.launch")
+        free_walk_cmd = "gnome-terminal -e 'bash -c \"roslaunch wpb_home_tutorials 6_path_plan.launch\"'"
         os.system(free_walk_cmd)
 
     def button2_1click(self):
