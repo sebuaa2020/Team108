@@ -560,11 +560,11 @@ class LeftTabWidget(QWidget):
                 self.label6_2 = QtWidgets.QLabel()
                 self.label6_2.setTextFormat(QtCore.Qt.AutoText)
                 self.label6_2.setText('环境要求:\n\
-                1、机器人一定要在室内运行，且空间不能过于狭窄。\n\
-                2、最好时刻保证机器人的工作温度在15°C到35°C间。\n\
-                3、避免与雨水、雾、积水以及任何其他液体接触等。\n\
-                4、保证机器人所处环境地面坚硬、平滑无较大裂痕。\n\
-                5、所处环境如有坡道，要求坡道的坡度不大于15°。')
+                1、机器人仿真环境正常建立：界面由暗到亮，且能够拖拽改变视角。\n\
+                2、计算机运行内存资源充足。保证虚拟环境仿真、建图指令有足够空间运行。\n\
+                3、保证仿真环境建图指令正确运行，机器人能够成功扫描四周并建图。\n\
+                4、保证机器人所处地点不在死角，四周可以规划出一条合理路径。\n\
+                5、标定航点不设置在障碍物中。')
                 self.label6_2.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
@@ -574,9 +574,8 @@ class LeftTabWidget(QWidget):
                 self.label6_3.setTextFormat(QtCore.Qt.AutoText)
                 self.label6_3.setText("避免损伤:\n\
                 1、设定的移动速率不超过0.2m/s，避免因机器人速度过快造成的损伤。\n\
-                2、机器人组成部件均为坚硬物体，避免机器人接近地图边界时的碰撞。\n\
-                3、抓取物品为非敞口含液体容器、非陶瓷玻璃制品、重量需小于10kg。\n\
-                4、注意机械臂在抓取时的姿态和力度，如有意外发生需及时停止抓取。\n")
+                2、机器人运行的起始位置附近相对空旷，避免碰撞。\n\
+                3、标定的航点附近应相对空旷，避免碰撞。\n")
                 self.label6_3.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
@@ -665,7 +664,7 @@ class LeftTabWidget(QWidget):
                 self.label9_2 = QtWidgets.QLabel()
                 self.label9_2.setTextFormat(QtCore.Qt.AutoText)
                 self.label9_2.setText(
-                    "Q1：用户下达指令后，机器人无法运动\nA1：停止使用机器人，检查机器人电量是否充足(即剩余电量是否大于等于23)\n若电量不足，请先为机器人补充电量再使用\n若电量充足，或补充电量后机器人仍不运行\n请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
+                    "Q1：用户下达指令后，机器人无法运动\nA1：重新运行该指令\n若成功，则继续向下运行系统\n若机器人仍不运行\n请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
                 self.label9_2.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
@@ -682,7 +681,7 @@ class LeftTabWidget(QWidget):
                 self.label9_4 = QtWidgets.QLabel()
                 self.label9_4.setTextFormat(QtCore.Qt.AutoText)
                 self.label9_4.setText(
-                    "Q3：机器人在运动中发生碰撞\nA3：立即使用“急停”按钮使机器人紧急制动\n查看机器人情况，从外观上初步判断机器人是否完好，并尝试机器人的其他功能\n若出现外观上的较大损坏或功能上的缺失\n请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
+                    "Q3：机器人在运动中发生碰撞\nA3：立即使机器人紧急制动\n若机器人能够正常制动，则重新规划路径运行\n若出现机器人仍发生碰撞\n请在下方“联系我们”处查找本设计组的联系方式，我们将为您提供免费的维修服务")
                 self.label9_4.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
