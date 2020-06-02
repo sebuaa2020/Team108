@@ -15,7 +15,7 @@ import qtawesome
 class LeftTabWidget(QWidget):
     '''左侧选项栏'''
 
-    pointlist = []  #########
+    pointlist = []
     renameIndex = 1
 
     def __init__(self):
@@ -70,7 +70,7 @@ class LeftTabWidget(QWidget):
         self.left_widget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
         list_str = ['功能选择', '避障', '导航', '取物', '用户手册', '使用方法', '注意事项', '硬件设置', '联系与帮助', '遇到问题', '联系我们']
-
+        # os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch robot_sim_demo robot_spawn.launch\"'")
         for i in range(11):
             self.item = QListWidgetItem(list_str[i], self.left_widget)  # 左侧选项的添加
             self.item.setFont(QFont("等线", 11))
@@ -89,9 +89,18 @@ class LeftTabWidget(QWidget):
                     self.label0_1.setStyleSheet('''color:black;font-size:23px; font-family:等线;''');
                     self.label0_1.setAlignment(Qt.AlignCenter)
                     self.label0_1.setPixmap(QPixmap('demo_rob.jpg'))
+
                     self.layout0.addWidget(self.label0_1, 0, 0, 1, 9)
+                    self.button1 = QtWidgets.QPushButton()
+                    self.button1.setText("开始")
+                    self.button1.setFixedSize(100, 40)
+                    self.button1.setStyleSheet('''QPushButton{background:#1E90FF;border-radius:10px;font-family:等线;
+                                                                   font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
+                    self.button1.clicked.connect(self.button1_0click)
 
                     self.right_widget.addWidget(self.centralWidget0)
+                    self.layout0.addWidget(self.button1, 9, 4, 2, 2)
+
                 elif i == 4:
                     self.item.setIcon(qtawesome.icon('fa.tags', color='white'))
 
@@ -133,14 +142,14 @@ class LeftTabWidget(QWidget):
             if i == 1:
                 # 创建整体背景
                 self.centralWidget1 = QtWidgets.QWidget()
-                self.centralWidget1.setStyleSheet('''background:white;border-width:0;''');
+                self.centralWidget1.setStyleSheet('''background:#F0FFFF;border-width:0;''');
                 # 创建左侧部件的网格布局层
                 self.layout1 = QtWidgets.QGridLayout()
                 self.centralWidget1.setLayout(self.layout1)
 
                 # 创建机器人最大运行速度的输入框
                 self.edit1_1 = QtWidgets.QLineEdit()
-                self.edit1_1.setPlaceholderText("请输入速度(两位小数,0.0-1.0)")
+                self.edit1_1.setPlaceholderText("请输入速度(两位小数,0.0-0.2)")
                 self.edit1_1.setStyleSheet('''color:black;background:transparent;border-width:0;
                                                 border-style:outset;border-bottom:1px solid black;
                                                 font-size:20px; font-family:等线;''')
@@ -164,21 +173,23 @@ class LeftTabWidget(QWidget):
                 self.label1_1 = QtWidgets.QLabel()
                 self.label1_1.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_1.setText("速度")
-                self.label1_1.setStyleSheet('''color:black;font-size:26px; font-family:等线;''')
+                self.label1_1.setStyleSheet('''color:1E90FF;font-size:26px;background:#F0FFFF;
+                                                font-family:等线;''')
                 self.label1_1.setAlignment(Qt.AlignCenter)
 
                 # 设置时间提示标签：label1_2
                 self.label1_2 = QtWidgets.QLabel()
                 self.label1_2.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_2.setText("时间")
-                self.label1_2.setStyleSheet('''color:black;font-size:26px; font-family:等线;''')
+                self.label1_2.setStyleSheet('''color:1E90FF;font-size:26px;background:#F0FFFF;
+                                                font-family:等线;''')
                 self.label1_2.setAlignment(Qt.AlignCenter)
 
                 # 设置扫地标签：label1_3
                 self.label1_3 = QtWidgets.QLabel()
                 self.label1_3.setTextFormat(QtCore.Qt.AutoText)
                 self.label1_3.setText("扫地")
-                self.label1_3.setStyleSheet('''color:black;font-size:26px;background:rgb(100,100,100,80;background:#454545);
+                self.label1_3.setStyleSheet('''color:1E90FF;font-size:23px;background:#F0FFFF;
                                                 font-family:等线;''')
                 self.label1_3.setAlignment(Qt.AlignCenter)
 
@@ -323,7 +334,7 @@ class LeftTabWidget(QWidget):
                 self.label3_1 = QtWidgets.QLabel()
                 self.label3_1.setTextFormat(QtCore.Qt.AutoText)
                 self.label3_1.setText("抓取")
-                self.label3_1.setStyleSheet('''color:#black;font-size:23px;background:rgb(00,00,00,0;background:#1E90FF);
+                self.label3_1.setStyleSheet('''color:black;font-size:23px;background:#F0FFFF;
                                                             font-family:等线;''');
                 self.label3_1.setAlignment(Qt.AlignCenter)
 
@@ -343,7 +354,7 @@ class LeftTabWidget(QWidget):
 
                 self.centralWidget3 = QtWidgets.QWidget()
                  # 更改颜色
-                self.centralWidget3.setStyleSheet('''background:white;border-width:0;''');
+                self.centralWidget3.setStyleSheet('''background:#F0FFFF;border-width:0;''');
                 self.layout3 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
                 self.centralWidget3.setLayout(self.layout3)
 
@@ -494,7 +505,7 @@ class LeftTabWidget(QWidget):
                 self.label6_1 = QtWidgets.QLabel()
                 self.label6_1.setTextFormat(QtCore.Qt.AutoText)
                 self.label6_1.setText("注意事项")
-                self.label6_1.setStyleSheet('''color:black;font-size:23px;background:#1E90FF;
+                self.label6_1.setStyleSheet('''color:white;font-size:23px;background:#1E90FF;
                                                 font-family:Times new Romans;''');
                 self.label6_1.setAlignment(Qt.AlignCenter)
 
@@ -789,43 +800,47 @@ class LeftTabWidget(QWidget):
         free_walk_cmd = "gnome-terminal -e 'bash -c \"roslaunch wpb_home_tutorials 6_path_plan.launch\"'"
         os.system(free_walk_cmd)
 
+    def button1_0click(self):
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch robot_sim_demo robot_spawn.launch\"'")
+
     def button2_1click(self):
         print("roslaunch wpb_home_tutorials gmapping.launch")
         os.system(
-            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch wpb_home_tutorials gmapping.launch\"'")
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch wpb_home_tutorials gmapping.launch\"'")
 
     def button2_7click(self):
         print("rosrun robot_sim_demo keyboard_vel_ctrl")
         # os.system("rosrun robot_sim_demo keyboard_vel_ctrl")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun robot_sim_demo keyboard_vel_ctrl\"'")
+        os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun robot_sim_demo keyboard_vel_ctrl\"'")
 
     def button2_2click(self):
         print("rosrun map_server map_saver -f map")
         os.system(
-            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun map_server map_saver -f map&&cp map.yaml /home/zzx/catkin_ws/src/wpb_home/wpb_home_tutorials/maps/map.yaml&&cp map.pgm /home/zzx/catkin_ws/src/wpb_home/wpb_home_tutorials/maps/map.pgm\"'")
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun map_server map_saver -f map&&cp map.yaml ~/demo_ws/src/wpb_home/wpb_home_tutorials/maps/map.yaml&&cp map.pgm ~/demo_ws/src/wpb_home/wpb_home_tutorials/maps/map.pgm\"'")
 
     def button2_3click(self):
         print("roslaunch waterplus_map_tools add_waypoint.launch")
         os.system(
-            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch waterplus_map_tools add_waypoint.launch\"'")
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&roslaunch waterplus_map_tools add_waypoint.launch\"'")
 
     def button2_4click(self):
         print("rosrun waterplus_map_tools wp_saver")
-        os.system("gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun waterplus_map_tools wp_saver\"'")
+        os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun waterplus_map_tools wp_saver\"'")
         time.sleep(2)
         self.comboBox2.clear()
-        if os.path.exists('/home/zzx/catkin_ws/waypoints.xml') == False:
-            file = open('/home/zzx/catkin_ws/waypoints.xml', 'w')
+        if os.path.exists('~/demo_ws/waypoints.xml') == False:
+            file = open('~/demo_ws/waypoints.xml', 'w')
             file.write('<Waterplus>\n</Waterplus>')
             file.close()
-        f = open('/home/zzx/catkin_ws/waypoints.xml', 'r')
+        f = open('~/demo_ws/waypoints.xml', 'r')
         newFile = re.sub(r"(?<=<Name>).+?(?=</Name>)", indexRename, f.read())
         f.close()
-        f = open('/home/zzx/catkin_ws/waypoints.xml', 'w')
+        f = open('~/demo_ws/waypoints.xml', 'w')
         f.write(newFile)
         f.close()
         self.renameIndex = 1
-        f = open('/home/zzx/catkin_ws/waypoints.xml', 'r')
+        f = open('~/demo_ws/waypoints.xml', 'r')
         pointlist = re.findall(r"(?<=<Name>).+?(?=</Name>)", f.read(), re.S)
         print(pointlist)
         self.comboBox2.addItems(pointlist)
@@ -834,15 +849,15 @@ class LeftTabWidget(QWidget):
     def button2_5click(self):
         print("roslaunch waterplus_map_tools wpb_home_nav_test.launch")
         os.system(
-            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&roslaunch waterplus_map_tools wpb_home_nav_test.launch; exec bash\"'")
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch waterplus_map_tools wpb_home_nav_test.launch; exec bash\"'")
         print("rosrun waterplus_map_tools wp_nav_test")
         os.system(
-            "gnome-terminal -e 'bash -c \"cd /home/zzx/catkin_ws/&&rosrun waterplus_map_tools wp_nav_test; exec bash\"'")
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun waterplus_map_tools wp_nav_test; exec bash\"'")
 
     def button2_6click(self):
         print(self.comboBox2.currentIndex() + 1)
         # get to the chosed point
-        pointoutput = open('/home/zzx/catkin_ws/point.txt', 'w')
+        pointoutput = open('~/demo_ws/point.txt', 'w')
         pointoutput.write(str(self.comboBox2.currentIndex() + 1))
         pointoutput.close()
 
@@ -853,7 +868,7 @@ def main():
     main_wnd = LeftTabWidget()
     main_wnd.show()
 
-    app.exec()
+    app.exec_()
 
 if __name__ == '__main__':
     main()
