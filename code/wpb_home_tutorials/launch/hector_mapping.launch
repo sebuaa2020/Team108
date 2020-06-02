@@ -1,7 +1,7 @@
 <launch>
 
   <arg name="model" default="$(find wpb_home_bringup)/urdf/wpb_home.urdf"/>
-  <arg name="gui" default="true" />
+  <arg name="gui" default="false" />
   <arg name="rvizconfig" default="$(find wpb_home_tutorials)/rviz/slam.rviz" />
 
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
@@ -55,14 +55,14 @@
   </node>
 
   <!--- Run Rplidar -->
-  <node pkg="rplidar_ros" type="rplidarNode" name="rplidar" output="screen">
+  <!--<node pkg="rplidar_ros" type="rplidarNode" name="rplidar" output="screen">
   <param name="serial_port"         type="string" value="/dev/rplidar"/>  
   <param name="serial_baudrate"     type="int"    value="115200"/>
   <param name="frame_id"            type="string" value="laser"/>
   <param name="inverted"            type="bool"   value="false"/>
   <param name="angle_compensate"    type="bool"   value="true"/>
   <remap from="scan" to="scan_raw"/>
-  </node>
+  </node>-->
   
   <!-- Run lidar filter -->
   <node pkg="wpb_home_bringup" type="wpb_home_lidar_filter" name="wpb_home_lidar_filter">

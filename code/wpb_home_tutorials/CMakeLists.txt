@@ -120,6 +120,27 @@ link_directories(${PCL_LIBRARY_DIRS} ./data)
 ## Your package locations should be listed before other locations
 # include_directories(include)
 
+## Declare a C++ library
+# add_library(wpb_home_tutorials
+#   src/${PROJECT_NAME}/wpb_home_tutorials.cpp
+# )
+
+## Add cmake target dependencies of the library
+## as an example, code may need to be generated before libraries
+## either from message generation or dynamic reconfigure
+# add_dependencies(wpb_home_tutorials ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+## Declare a C++ executable
+# add_executable(wpb_home_tutorials_node src/wpb_home_tutorials_node.cpp)
+
+## Add cmake target dependencies of the executable
+## same as for the library above
+# add_dependencies(wpb_home_tutorials_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+## Specify libraries to link a library or executable target against
+# target_link_libraries(wpb_home_tutorials_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -171,3 +192,192 @@ link_directories(${PCL_LIBRARY_DIRS} ./data)
 
 
 ## Declare a C++ executable
+add_executable(wpb_home_follow
+  src/wpb_home_follow.cpp
+)
+add_dependencies(wpb_home_follow ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_follow
+  ${catkin_LIBRARIES} -lkl_outlier
+  ${PCL_LIBRARIES}
+)
+add_dependencies(wpb_home_follow wpb_home_tutorials_gencpp)
+
+## Declare a C++ executable
+add_executable(wpb_home_obj_detect
+  src/wpb_home_obj_detect.cpp
+)
+add_dependencies(wpb_home_obj_detect ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_obj_detect
+  ${catkin_LIBRARIES}
+)
+
+## Declare a C++ executable
+add_executable(wpb_home_face_detect
+  src/wpb_home_face_detect.cpp
+)
+add_dependencies(wpb_home_face_detect ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_face_detect
+  ${catkin_LIBRARIES}
+)
+
+## Declare a C++ executable
+add_executable(wpb_home_cruise
+  src/wpb_home_cruise.cpp
+)
+add_dependencies(wpb_home_cruise ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_cruise
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_simple_goal
+  src/wpb_home_simple_goal.cpp
+)
+add_dependencies(wpb_home_simple_goal ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_simple_goal
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_speech_recognition
+  src/wpb_home_speech_recognition.cpp
+)
+add_dependencies(wpb_home_speech_recognition ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_speech_recognition
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_sr_xfyun
+  src/wpb_home_sr_xfyun.cpp
+)
+add_dependencies(wpb_home_sr_xfyun ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_sr_xfyun
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_velocity_control
+  src/wpb_home_velocity_control.cpp
+)
+add_dependencies(wpb_home_velocity_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_velocity_control
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_voice_cmd
+  src/wpb_home_voice_cmd.cpp
+)
+add_dependencies(wpb_home_voice_cmd ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_voice_cmd
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_speak
+  src/wpb_home_speak.cpp
+)
+add_dependencies(wpb_home_speak ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_speak
+  ${catkin_LIBRARIES}
+)
+
+
+add_executable(wpb_home_imu_turn
+  src/wpb_home_imu_turn.cpp
+)
+add_dependencies(wpb_home_imu_turn ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_imu_turn
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_mani_ctrl
+  src/wpb_home_mani_ctrl.cpp
+)
+add_dependencies(wpb_home_mani_ctrl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_mani_ctrl
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_grab_client
+  src/wpb_home_grab_client.cpp
+)
+add_dependencies(wpb_home_grab_client ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_grab_client
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_capture_image
+  src/wpb_home_capture_image.cpp
+)
+add_dependencies(wpb_home_capture_image ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_capture_image
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_lidar_data
+  src/wpb_home_lidar_data.cpp
+)
+add_dependencies(wpb_home_lidar_data ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_lidar_data
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_lidar_behavior
+  src/wpb_home_lidar_behavior.cpp
+)
+add_dependencies(wpb_home_lidar_behavior ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_lidar_behavior
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_grab_object
+  src/wpb_home_grab_object.cpp
+)
+add_dependencies(wpb_home_grab_object ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_grab_object
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_image_node
+  src/wpb_home_image_node.cpp
+)
+add_dependencies(wpb_home_image_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_image_node
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_pointcloud_node
+  src/wpb_home_pointcloud_node.cpp
+)
+add_dependencies(wpb_home_pointcloud_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_pointcloud_node
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_behavior_node
+  src/wpb_home_behavior_node.cpp
+)
+add_dependencies(wpb_home_behavior_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_behavior_node
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_obj_node
+  src/wpb_home_obj_node.cpp
+)
+add_dependencies(wpb_home_obj_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_obj_node
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_grab_node
+  src/wpb_home_grab_node.cpp
+)
+add_dependencies(wpb_home_grab_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_grab_node
+  ${catkin_LIBRARIES}
+)
+
+add_executable(wpb_home_face_node
+  src/wpb_home_face_node.cpp
+)
+add_dependencies(wpb_home_face_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(wpb_home_face_node
+  ${catkin_LIBRARIES}
+)
