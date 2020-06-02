@@ -371,8 +371,8 @@ class LeftTabWidget(QWidget):
                 self.layout2.addWidget(self.button2_3, 4, 4, 1, 2)
                 self.layout2.addWidget(self.button2_4, 6, 1, 1, 2)
                 self.layout2.addWidget(self.button2_5, 6, 4, 1, 2)
-                self.layout2.addWidget(self.button2_6, 8, 4, 1, 2)
-                self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
+                #self.layout2.addWidget(self.button2_6, 8, 4, 1, 2)
+                #self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
                 self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
                 self.right_widget.addWidget(self.centralWidget2)
 
