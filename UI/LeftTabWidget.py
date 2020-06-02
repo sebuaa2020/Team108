@@ -71,7 +71,7 @@ class LeftTabWidget(QWidget):
         self.left_widget.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.left_widget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
-        list_str = ['功能选择', '避障', '导航', '取物', '用户手册', '使用方法', '注意事项', '硬件设置', '联系与帮助', '遇到问题', '联系我们']
+        list_str = ['功能选择', '避障', '导航', '取物', '用户手册', '使用方法', '注意事项', '环境配置', '联系与帮助', '遇到问题', '联系我们']
         # os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch robot_sim_demo robot_spawn.launch\"'")
 
         for i in range(11):
@@ -220,10 +220,10 @@ class LeftTabWidget(QWidget):
                                                 font-family:等线;''')
                 self.label1_2.setAlignment(Qt.AlignCenter)
 
-                # 设置扫地标签：label1_3
+                # 设置避障标签：label1_3
                 self.label1_3 = QtWidgets.QLabel()
                 self.label1_3.setTextFormat(QtCore.Qt.AutoText)
-                self.label1_3.setText("扫地")
+                self.label1_3.setText("避障")
                 self.label1_3.setStyleSheet('''color:1E90FF;font-size:23px;background:#F0FFFF;
                                                 font-family:等线;''')
                 self.label1_3.setAlignment(Qt.AlignCenter)
@@ -590,7 +590,7 @@ class LeftTabWidget(QWidget):
 
                 self.right_widget.addWidget(self.centralWidget6)
 
-            # '硬件设置'
+            # '环境配置'
             elif i == 7:
                 self.centralWidget7 = QtWidgets.QWidget()
                 self.centralWidget7.setStyleSheet('''background:#F0FFFF;border-width:0;''')
@@ -600,7 +600,7 @@ class LeftTabWidget(QWidget):
 
                 self.label7_1 = QtWidgets.QLabel()
                 self.label7_1.setTextFormat(QtCore.Qt.AutoText)
-                self.label7_1.setText("硬件设置")
+                self.label7_1.setText("环境配置")
                 self.label7_1.setStyleSheet('''color:black;font-size:23px;background:#F0FFFF;
                                                 font-family:Times new Romans;''');
                 self.label7_1.setAlignment(Qt.AlignCenter)
@@ -615,7 +615,7 @@ class LeftTabWidget(QWidget):
 
                 self.label7_3 = QtWidgets.QLabel()
                 self.label7_3.setTextFormat(QtCore.Qt.AutoText)
-                self.label7_3.setPixmap(QPixmap('panel.png'))
+                self.label7_3.setPixmap(QPixmap('simulate3.png'))
                 self.label7_3.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
@@ -623,7 +623,7 @@ class LeftTabWidget(QWidget):
 
                 self.label7_4 = QtWidgets.QLabel()
                 self.label7_4.setTextFormat(QtCore.Qt.AutoText)
-                self.label7_4.setText("结构组成展示")
+                self.label7_4.setText("机器人结构组成展示")
                 self.label7_4.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
@@ -631,7 +631,7 @@ class LeftTabWidget(QWidget):
 
                 self.label7_5 = QtWidgets.QLabel()
                 self.label7_5.setTextFormat(QtCore.Qt.AutoText)
-                self.label7_5.setText("开关面板展示")
+                self.label7_5.setText("仿真环境展示")
                 self.label7_5.setStyleSheet('''color:black;font-size:23px;background:rgb(0,0,00,00);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''')
