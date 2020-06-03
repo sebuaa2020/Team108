@@ -380,7 +380,7 @@ class LeftTabWidget(QWidget):
                 # label3_1 设置标题相关属性
                 self.label3_1 = QtWidgets.QLabel()
                 self.label3_1.setTextFormat(QtCore.Qt.AutoText)
-                self.label3_1.setText("抓取")
+                self.label3_1.setText("取物")
                 self.label3_1.setStyleSheet('''color:black;font-size:23px;background:#F0FFFF;
                                                             font-family:等线;''');
                 self.label3_1.setAlignment(Qt.AlignCenter)
