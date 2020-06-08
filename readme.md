@@ -16,7 +16,7 @@ Team108:
 
 详细内容见[项目wiki](https://github.com/sebuaa2020/Team108/wiki/)
 
-### 展示视频
+### 展示视频即代码PPT
 
 [北航云盘展示视频链接](https://bhpan.buaa.edu.cn:443/link/1E63B997905FBF42A983C4A7570A9D80) 有效期限：2020-07-07 23:59
 
