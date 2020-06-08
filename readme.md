@@ -1,6 +1,6 @@
 # sebuaa2020-Team108
 
-![image-20200608161219878](img\智慧女孩不秃头.png)
+![Image text](img/智慧女孩不秃头.png)
 
 ### 项目结构
 
