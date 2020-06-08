@@ -184,7 +184,7 @@ class LeftTabWidget(QWidget):
 
                 # 创建机器人最大运行速度的输入框
                 self.edit1_1 = QtWidgets.QLineEdit()
-                self.edit1_1.setPlaceholderText("请输入速度(两位小数,0.0-0.2)")
+                self.edit1_1.setPlaceholderText("请输入速度(1位小数,0.0-1.0)")
                 self.edit1_1.setStyleSheet('''color:black;background:transparent;border-width:0;
                                                 border-style:outset;border-bottom:1px solid black;
                                                 font-size:20px; font-family:等线;''')
@@ -195,7 +195,7 @@ class LeftTabWidget(QWidget):
 
                 # 创建避障任务巡航时间的输入框
                 self.edit1_2 = QtWidgets.QLineEdit()
-                self.edit1_2.setPlaceholderText("请输入时间(三位整数)")
+                self.edit1_2.setPlaceholderText("请输入时间(3位整数)")
                 self.edit1_2.setStyleSheet('''color:black;background:transparent;border-width:0;
                                                 border-style:outset;border-bottom:1px solid black;
                                                 font-size:20px; font-family:等线;''')
@@ -851,10 +851,10 @@ class LeftTabWidget(QWidget):
         else:
             time = int(self.edit1_2.text())
 
-        self.setConfig(vel, time)
+        #self.setConfig(vel, time)
 
-        print("roslaunch wpb_home_apps 6_path_plan.launch")
-        free_walk_cmd = "gnome-terminal -e 'bash -c \"roslaunch wpb_home_tutorials 6_path_plan.launch\"'"
+        print("rosrun wpb_home_tutorials wpb_home_behavior_node ")
+        free_walk_cmd = "gnome-terminal -e 'bash -c \"cd ~/catkin_ws/&&source ./devel/setup.bash&&rosrun wpb_home_tutorials wpb_home_behavior_node \"'"
         os.system(free_walk_cmd)
 
     # 增加按钮一点击调用的函数
