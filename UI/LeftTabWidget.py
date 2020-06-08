@@ -255,6 +255,7 @@ class LeftTabWidget(QWidget):
                 self.right_widget.addWidget(self.centralWidget1)
 
             elif i == 2:
+                # os.system("gnome-terminal -e 'bash -c \"roscore\"'")
                 # 创建整体背景
                 self.centralWidget2 = QtWidgets.QWidget()
                 self.centralWidget2.setStyleSheet('''background:#F0FFFF;border-width:0;''');
@@ -269,6 +270,15 @@ class LeftTabWidget(QWidget):
                 self.button2_7.setStyleSheet('''QPushButton{background:#1E90FF;border-radius:20px;font-family:等线;
                                                font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
                 self.button2_7.setFixedHeight(40)
+
+                # 创建按钮2_8，启动手柄
+                self.button2_8 = QtWidgets.QPushButton(self.centralWidget2)
+                self.button2_8.setObjectName("button8")
+                self.button2_8.setText("启动语音控制")
+                self.button2_8.clicked.connect(self.button2_8click)
+                self.button2_8.setStyleSheet('''QPushButton{background:#1E90FF;border-radius:20px;font-family:等线;
+                                                               font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
+                self.button2_8.setFixedHeight(40)
 
                 # 创建按钮2_1，功能是调用地图创建终端
                 self.button2_1 = QtWidgets.QPushButton(self.centralWidget2)
@@ -316,20 +326,20 @@ class LeftTabWidget(QWidget):
                 self.button2_5.setFixedHeight(40)
 
                 # 增加容器comboBox2
-                self.comboBox2 = QtWidgets.QComboBox(self.centralWidget2)
-                self.comboBox2.setObjectName("comboBox")
-                self.comboBox2.setStyleSheet('''QComboBox{background:#1E90FF;border-radius:10px;font-family:等线;
-                                               font-size:18px;color:white}QComboBox:hover{background:#EEDC82;}''')
-                self.comboBox2.setFixedHeight(40)
+                # self.comboBox2 = QtWidgets.QComboBox(self.centralWidget2)
+                # self.comboBox2.setObjectName("comboBox")
+                # self.comboBox2.setStyleSheet('''QComboBox{background:#1E90FF;border-radius:10px;font-family:等线;
+                #                                font-size:18px;color:white}QComboBox:hover{background:#EEDC82;}''')
+                # self.comboBox2.setFixedHeight(40)
 
                 # 设置button2_6，机器人运行按钮
-                self.button2_6 = QtWidgets.QPushButton(self.centralWidget2)
-                self.button2_6.setObjectName("button6")
-                self.button2_6.setText("G O !")
-                self.button2_6.clicked.connect(self.button2_6click)
-                self.button2_6.setStyleSheet('''QPushButton{background:#1E90FF;border-radius:20px;font-family:等线;
-                                               font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
-                self.button2_6.setFixedHeight(40)
+                # self.button2_6 = QtWidgets.QPushButton(self.centralWidget2)
+                # self.button2_6.setObjectName("button6")
+                # self.button2_6.setText("G O !")
+                # self.button2_6.clicked.connect(self.button2_6click)
+                # self.button2_6.setStyleSheet('''QPushButton{background:#1E90FF;border-radius:20px;font-family:等线;
+                #                                font-size:18px;color:white}QPushButton:hover{background:#EEDC82;}''')
+                # self.button2_6.setFixedHeight(40)
 
                 # 增加页面标题，导航
                 self.label2_1 = QtWidgets.QLabel()
@@ -340,10 +350,10 @@ class LeftTabWidget(QWidget):
                 self.label2_1.setAlignment(Qt.AlignCenter)
 
                 # 增加页面第二个标题
-                self.label2_2 = QtWidgets.QLabel()
-                self.label2_2.setTextFormat(QtCore.Qt.AutoText)
-                self.label2_2.setText("")
-                self.label2_2.setAlignment(Qt.AlignCenter)
+                # self.label2_2 = QtWidgets.QLabel()
+                # self.label2_2.setTextFormat(QtCore.Qt.AutoText)
+                # self.label2_2.setText("")
+                # self.label2_2.setAlignment(Qt.AlignCenter)
 
                 #
                 self.layout2.setColumnStretch(0, 1)
@@ -371,9 +381,10 @@ class LeftTabWidget(QWidget):
                 self.layout2.addWidget(self.button2_3, 4, 4, 1, 2)
                 self.layout2.addWidget(self.button2_4, 6, 1, 1, 2)
                 self.layout2.addWidget(self.button2_5, 6, 4, 1, 2)
-                #self.layout2.addWidget(self.button2_6, 8, 4, 1, 2)
-                #self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
-                self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
+                self.layout2.addWidget(self.button2_8, 8, 1, 1, 2)
+                # self.layout2.addWidget(self.button2_6, 8, 4, 1, 2)
+                # self.layout2.addWidget(self.comboBox2, 8, 1, 1, 2)
+                # self.layout2.addWidget(self.label2_2, 9, 1, 1, 7)
                 self.right_widget.addWidget(self.centralWidget2)
 
             elif i == 3:
@@ -389,18 +400,18 @@ class LeftTabWidget(QWidget):
                 self.label3_2 = QtWidgets.QLabel()
                 self.label3_2.setAlignment(Qt.AlignCenter)
                 pixmap = QPixmap('指南针.png').scaled(self.label3_2.width() * 0.25,
-                                                                               self.label3_2.height() * 0.35)
+                                                   self.label3_2.height() * 0.35)
                 self.label3_2.setPixmap(pixmap)
 
                 # label3_3 放大镜图标相关属性
                 self.label3_3 = QtWidgets.QLabel()
                 self.label3_3.setAlignment(Qt.AlignCenter)
                 pixmap = QPixmap('放大镜.png').scaled(self.label3_3.width() * 0.25,
-                                                                               self.label3_3.height() * 0.35)
+                                                   self.label3_3.height() * 0.35)
                 self.label3_3.setPixmap(pixmap)
 
                 self.centralWidget3 = QtWidgets.QWidget()
-                 # 更改颜色
+                # 更改颜色
                 self.centralWidget3.setStyleSheet('''background:#F0FFFF;border-width:0;''');
                 self.layout3 = QtWidgets.QGridLayout()  # 创建左侧部件的网格布局层
                 self.centralWidget3.setLayout(self.layout3)
@@ -761,7 +772,8 @@ class LeftTabWidget(QWidget):
 
                 self.label10_7 = QtWidgets.QLabel()
                 self.label10_7.setTextFormat(QtCore.Qt.AutoText)
-                self.label10_7.setText("组员：杨昶\n邮箱：17373356@buaa.edu.cn\n负责：部分避障与自由行走模块\n部分UI架构模块\n讨论实现物体检测与抓取\n格言：吃饭睡觉乐呵呵")
+                self.label10_7.setText(
+                    "组员：杨昶\n邮箱：17373356@buaa.edu.cn\n负责：部分避障与自由行走模块\n部分UI架构模块\n讨论实现物体检测与抓取\n格言：吃饭睡觉乐呵呵")
                 self.label10_7.setStyleSheet('''color:black;font-size:23px;background:rgb(0,00,0,0);
                                                 border-width:5;border-style:ridge;border-color:#1E90FF;
                                                 font-family:等线;''');
@@ -824,8 +836,6 @@ class LeftTabWidget(QWidget):
                     self.centralWidget0.setStyleSheet('''background:white;border-width:0;''');
                     self.right_widget.addWidget(self.centralWidget0)
 
-
-
     def button1_1click(self):
         vel = 0
         time = 0
@@ -841,7 +851,7 @@ class LeftTabWidget(QWidget):
         else:
             time = int(self.edit1_2.text())
 
-        self.setConfig(vel,time)
+        self.setConfig(vel, time)
 
         print("roslaunch wpb_home_apps 6_path_plan.launch")
         free_walk_cmd = "gnome-terminal -e 'bash -c \"roslaunch wpb_home_tutorials 6_path_plan.launch\"'"
@@ -850,7 +860,7 @@ class LeftTabWidget(QWidget):
     # 增加按钮一点击调用的函数
     def button1_0click(self):
         os.system(
-            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch robot_sim_demo robot_spawn.launch\"'")
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&export SVGA_VGPU10=0&&roslaunch robot_sim_demo robot_spawn.launch\"'")
 
     # 增加按钮2——1点击调用的函数
     def button2_1click(self):
@@ -862,7 +872,11 @@ class LeftTabWidget(QWidget):
     def button2_7click(self):
         print("rosrun robot_sim_demo keyboard_vel_ctrl")
         # os.system("rosrun robot_sim_demo keyboard_vel_ctrl")
-        os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun robot_sim_demo keyboard_vel_ctrl\"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun robot_sim_demo keyboard_vel_ctrl\"'")
+    def button2_8click(self):
+        print("roslaunch xfyun_waterplus voice_cmd_wpb_home.launch")
+        os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&source ./devel/setup.bash&&roslaunch xfyun_waterplus voice_cmd_wpb_home.launch\"'")
 
     # 增加按钮2_2点击调用的函数
     def button2_2click(self):
@@ -879,7 +893,8 @@ class LeftTabWidget(QWidget):
     # 增加按钮2_4点击调用的函数
     def button2_4click(self):
         print("rosrun waterplus_map_tools wp_saver")
-        os.system("gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun waterplus_map_tools wp_saver\"'")
+        os.system(
+            "gnome-terminal -e 'bash -c \"cd ~/demo_ws/&&cd ~/demo_ws/&&source ./devel/setup.bash&&rosrun waterplus_map_tools wp_saver\"'")
         time.sleep(2)
         self.comboBox2.clear()
         if os.path.exists('~/demo_ws/waypoints.xml') == False:
@@ -916,6 +931,7 @@ class LeftTabWidget(QWidget):
         pointoutput.write(str(self.comboBox2.currentIndex() + 1))
         pointoutput.close()
 
+
 def main():
     ''' '''
     app = QApplication(sys.argv)
@@ -924,6 +940,7 @@ def main():
     main_wnd.show()
 
     app.exec_()
+
 
 if __name__ == '__main__':
     main()
