@@ -192,9 +192,11 @@ STATE_COMBACK    机器人返回
 STATE_PASS    机器人递交抓取到的物体
 ```
 my_total/src/shopping.cpp中函数很多，其中：
-主函数 int mai  n()中，对变量的初始化和各种主题订阅、发布，
+主函数 int main()中，对变量的初始化和各种主题订阅、发布，
 在while循环中具体实现有限状态机，在每种状态中根据条件完成状态跳转。
 void AddNewWaypoint(string inStr)函数能将机器人在地图中的当前位置保存为航
 点，参数为要保存的航点名称。
 
 
+
+注：App_development 开发中的app端server代码 

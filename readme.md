@@ -1,5 +1,7 @@
 # sebuaa2020-Team108
 
+![Image text](img/智慧女孩不秃头.png)
+
 ### 项目结构
 
 ```
@@ -13,3 +15,4 @@ Team108:
   - 视频 				  # 相关演示视频
 ```
 
+详细内容见[项目wiki](https://github.com/sebuaa2020/Team108/wiki/)
