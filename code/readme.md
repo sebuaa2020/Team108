@@ -34,12 +34,20 @@ roslaunch robot_sim_demo robot_spawn.launch
    rosrun robot_sim_demo keyboard_vel_ctrl
    ```
 
-4. 最后进行地图保存，地图默认保存地址在本地文件夹下，运行指令为：
+4. 也可以采用语音操纵行走的形式，机器人每收到一条可识别的语音指令均会反馈消息“好的”。运行指令为：
+
+   ```
+   roslaunch xfyun_kinetic voice_cmd_wpb_home
+   ```
+  
+   
+   
+5. 最后进行地图保存，地图默认保存地址在本地文件夹下，运行指令为：
 
    ```bash
    rosrun map_server map_saver -f map
    ```
-  
+
    waterplus_map_tools/add_point.launch文件添加导航点
    wpb_home_tutorials/gmapping.launch文件用来建图
    wpb_home_apps/6_path_plan.launch文件用来多点导航
@@ -129,23 +137,37 @@ my_vel_package/src/vel_ctrl.cpp
 主要分为3部分，前向障碍物检测、自由行走、自由行走中遇到障碍物时的路径规划是进行自由行走的代码吧，我看里面autonomous是总和了前面部分，如果运动时间达到上限会停止，如果没有遇到障碍物则按照给定speed直线进行，否则将会进行169次迭代查找周围哪些位置没有障碍物，一旦发现则调整新的转向，然后按照新的转向和速度前进？
 
 主要在`my_vel_package`包，其主要功能是实现机器人基本建图时的自由行走、自由行走中的避障，以及在遇到障碍物时更换方向继续做自由行走。
-my_vel_packag/src/vel.ctrl.cpp 运动控制Node，实现对机器人运动的控制
+`my_vel_packag/src/vel_ctrl.cpp` 运动控制`Node`，实现对机器人运动的控制
 
 1. 设置机器人自由行走的初始方向和速度
 2. 如果运动时间达到上限会停止，如果没有，且没有遇到障碍物，则按照给定speed直线进行
 3. 遇到障碍物，将会进行169次迭代，查找周围哪些位置没有障碍物，一旦发现则调整新的转向，然后按照新的转向和速度前进
 
-代码的开始，先调用 ros::init(argc, argv, "vel_ctrl");进行该节点的初始化操作，接下来声明一个 ros::NodeHandle 对象 n，并用 n 生成一个广播对象 vel_pub，通过这个广播对象实现对机器人的控制（注意ROS约定机器人速度控制主题“/cmd_vel”）
-为了连续不断的发送速度，使用一个 while(ros::ok())循环，以 ros::ok()返回值作为循环结束条件可以让循环在程序关闭时正常退出。
-为了发送速度值，声明一个 geometry_msgs::Twist 类型的对象 vel_cmd，并将速度值赋值到这个对象里。
+代码的开始，先调用 `ros::init(argc, argv, "vel_ctrl")`;进行该节点的初始化操作，接下来声明一个` ros::NodeHandle` 对象 n，并用 n 生成一个广播对象 `vel_pub`，通过这个广播对象实现对机器人的控制（注意ROS约定机器人速度控制主题“/`md_vel`”）
+为了连续不断的发送速度，使用一个 `while(ros::ok())`循环，以`ros::ok()`返回值作为循环结束条件可以让循环在程序关闭时正常退出。
+为了发送速度值，声明一个 `geometry_msgs::Twist` 类型的对象 `vel_cmd`，并将速度值赋值到这个对象里。
 vel_cmd 赋值完毕后，使用广播对象 vel_pub 将其发布到主题“/cmd_vel”上去。机器人的核心节点会从这个主题接收我们发过去的速度值，并转发到硬件机体去执行。
 
 其中：
-vel_cmd.linear.x 是机器人前后平移运动速度，正值往前，负值往后，单位是“米/秒”；
-vel_cmd.linear.y 是机器人左右平移运动速度，正值往左，负值往右，单位是“米/秒”；
-vel_cmd.angular.z（注意 angular）是机器人自转速度，正值左转，负值右转，单位是
+`vel_cmd.linear.x` 是机器人前后平移运动速度，正值往前，负值往后，单位是“米/秒”；
+`vel_cmd.linear.y` 是机器人左右平移运动速度，正值往左，负值往右，单位是“米/秒”；
+`vel_cmd.angular.z`（注意 angular）是机器人自转速度，正值左转，负值右转，单位是
 “弧度/秒”；
 其他值对启智机器人来说没有意义，所以都赋值为零。
+
+1. 运行指令为：
+
+   ```
+   rosrun my_vel_package vel_ctrl
+   ```
+
+2. 此外，我们对官方源码进行部分修改，实现更为灵活的避障，运行指令为：
+
+   ```
+   rosrun wpb_home_tutorials wpb_home_behavior_node 
+   ```
+
+   
 
 
 ## 完成任务的整体文件
@@ -155,7 +177,8 @@ vel_cmd.angular.z（注意 angular）是机器人自转速度，正值左转，�
 
 主要在`my_total`包，其主要功能是搭建程序的主要框架，调动其他部分完成功能。
 对应指令 
-```roslaunch wpb_home_apps shopping.launch
+```
+roslaunch wpb_home_apps shopping.launch
 ```
 
 在这部分程序中实现了一个有限状态机，通过变量nState的赋值来表示机器人不同状态的衔接与跳转。
